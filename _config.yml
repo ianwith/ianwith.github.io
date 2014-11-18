@@ -5,14 +5,14 @@
 # Site
 title: Ian's Blog
 subtitle:
-description:
+description: Ian's Blog | ian | ianwith
 author: Ian Gong
-email:
+email: iangong@foxmail.com
 language:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://ianwith.github.io
 root: /
 permalink: :year/:month/:day/:title/
 tag_dir: tags
@@ -75,6 +75,8 @@ pagination_dir: page
 
 # Disqus
 disqus_shortname:
+
+duoshuo_shortname: gyian
 
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
