@@ -9,6 +9,29 @@
     &:hover
       text-decoration: underline
 
-#footer-info
+#footer-copyright
   line-height: line-height
-  font-size: 0.85em
+  font-size: 0.9em
+  float: left
+
+#footer-links
+  font-size: 1.8em
+  float: right
+  a
+    color: #fff
+    margin-left: 6px
+    margin-right: 6px
+    &:hover
+      text-decoration: none
+    &::before{
+      font-family: FontAwesome
+      font-smoothing()
+    }
+    &[title=weibo]::before{
+      content: "\f18a"
+    }
+    &[title=github]::before{
+      content: "\f09b"
+    }
+    &:hover::before
+      color: color-link
