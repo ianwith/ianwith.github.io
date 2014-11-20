@@ -1,4 +1,5 @@
 ianwith.github.io
 =================
 
-my blog
+This is my personal blog
+[http://ianwith.github.io/](http://ianwith.github.io/)
