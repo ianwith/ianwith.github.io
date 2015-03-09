@@ -81,7 +81,7 @@ duoshuo_shortname: gyian
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: landscape
+theme: next
 exclude_generator:
 
 # RSS
@@ -92,6 +92,17 @@ feed:
 
 sitemap:
   path: sitemap.xml
+
+# NexT theme config
+creative_commons: by-sa
+baidu_analytics: gyian
+avatar: /img/avatar.jpg
+since: 2014
+social:
+  GitHub: https://github.com/ianwith
+  Weibo: http://weibo.com/u/2713077571
+  Linkedin: https://www.linkedin.com/in/ianwith
+# End NexT theme config
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
