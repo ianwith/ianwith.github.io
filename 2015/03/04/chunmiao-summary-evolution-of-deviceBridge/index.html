@@ -1,0 +1,910 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-next">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
+
+
+    <meta name="description" content="Ian's Blog | ian | ianwith" />
+
+
+
+	<meta name="keywords" content="work,front end,summary,js,native," />
+
+  <title> 春苗项目小结之deviceBridge的进化之路 // Ian's Blog </title>
+</head>
+
+<body>
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Ian's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br />
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br />
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br />
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+            
+          
+
+          <div id="posts" class="posts-expand">
+            
+  
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              春苗项目小结之deviceBridge的进化之路
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            Posted on 2015-03-04
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <a href="/categories/work/">work</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/03/04/chunmiao-summary-evolution-of-deviceBridge/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/04/chunmiao-summary-evolution-of-deviceBridge/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          <p>deviceBridge是我们连接WebView页面与Native App的桥梁，它实现了JS和NativeCode之间的相互通信。春苗移动端App是一个HybridApp，内嵌了Wap版的帖子详情页面，其中包含的许多功能逻辑需要和NA协作共同完成，这就需要一套完备的交互接口。为了说明deviceBridge的工作原理，我们挑选一个最复杂的需求“回复”来理一理整个流程。所谓一通百通，跑通了一个功能，其他的也就迎刃而解了。</p>
+<p><img src="/img/chunmiao-summary-evolution-of-deviceBridge/reply_flow.png" alt="回复流程" style="width:882px"></p>
+<p>这里主要来看前端JS的接口部分，Native端的处理代码就暂时忽略了。下面我就说说在编写这个JS脚本时候我的学习和优化过程。<br><a id="more"></a></p>
+<h2 id="第一版">第一版</h2>
+<p>我们做了个简单的demo以确定NA与JS双方的交互方式。虽然了解到Android中addJavascriptInterface可以将接口注入到JS中，但是这种方式并不安全。所以我们采用伪协议的方式来实现相互间的通信。最开始的时候是这么做的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.deviceBridge = {};</div><div class="line"></div><div class="line">deviceBridge = {</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发起请求</div><div class="line">     */</div><div class="line">    _doRequest: <span class="function"><span class="keyword">function</span> <span class="params">(action, args)</span> </span>{</div><div class="line">        <span class="keyword">var</span> reqData = {</div><div class="line">            action: action,</div><div class="line">            args: args</div><div class="line">        };</div><div class="line">        <span class="built_in">window</span>.location = <span class="string">"chunmiao://#/"</span> + <span class="built_in">JSON</span>.stringify(reqData);</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发起回复，NA调起回复框和键盘</div><div class="line">     */</div><div class="line">    causeReply: <span class="function"><span class="keyword">function</span> <span class="params">(params)</span> </span>{</div><div class="line">        <span class="keyword">var</span> action = <span class="string">'REPLY'</span>;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.stringify(params);</div><div class="line">        <span class="keyword">this</span>._doRequest(action, args);</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 向服务器发送回复</div><div class="line">     */</div><div class="line">    sendComment: <span class="function"><span class="keyword">function</span> <span class="params">(res)</span> </span>{</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.parse(res);</div><div class="line">        <span class="keyword">try</span> {</div><div class="line">            <span class="comment">// request server api</span></div><div class="line">            <span class="built_in">window</span>[<span class="string">'send_reply'</span>](args);</div><div class="line">        } <span class="keyword">catch</span>(e) {}</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 回复结果状态通知NA</div><div class="line">     */</div><div class="line">    replyStatus: <span class="function"><span class="keyword">function</span> <span class="params">(res)</span> </span>{</div><div class="line">        <span class="keyword">var</span> action = <span class="string">'REPLY_RESULT'</span>;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.stringify(res.status);</div><div class="line">        <span class="keyword">this</span>._doRequest(action, args);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>这个版本只是实现了基本的接收发送消息的功能，它留下了很多问题：各个方法独立调用，流程没有有效衔接起来。当有多次请求时，无法辨别对应的哪个响应。</p>
+<h2 id="第二版">第二版</h2>
+<p>加入回调逻辑，并为每个回调生成唯一标识的ID，防止流程混乱。iOS和Android采用不同的通信方式：Android利用prompt方式传参，消息可以被Java端WebChromeClient.onJsPrompt拦截到；iOS由于无法拦截prompt，继续采用伪协议通信。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.deviceBridge = {};</div><div class="line"></div><div class="line">deviceBridge = {</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 生成唯一的编号</div><div class="line">     */</div><div class="line">    getReqID: <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">return</span> <span class="string">'_bd_'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 初始化回调函数</div><div class="line">     */</div><div class="line">    initCallback: <span class="function"><span class="keyword">function</span><span class="params">(callback, nReqID)</span> </span>{</div><div class="line">        callbackMethodName = <span class="string">'callbackjs'</span> + nReqID;</div><div class="line">        <span class="built_in">window</span>[callbackMethodName] = <span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>{</div><div class="line">            <span class="built_in">window</span>[callbackMethodName] = <span class="literal">null</span>;</div><div class="line">            callback(res);</div><div class="line">        }</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 开始请求，分别采用不同的通信方式</div><div class="line">     */</div><div class="line">    _sendRequest: <span class="function"><span class="keyword">function</span> <span class="params">(action, args, callbackMethodName)</span> </span>{</div><div class="line">        <span class="keyword">var</span> isAndroid = <span class="regexp">/Android/</span>.test(navigator.userAgent);</div><div class="line">        <span class="keyword">var</span> reqData = {</div><div class="line">            action: action,</div><div class="line">            args: args</div><div class="line">        };</div><div class="line">        <span class="keyword">if</span> (isAndroid) {</div><div class="line">            <span class="keyword">if</span> (callbackMethodName != <span class="literal">null</span>) {</div><div class="line">                prompt(<span class="built_in">JSON</span>.stringify(reqData), <span class="string">"javascript:"</span> + callbackMethodName + <span class="string">"('%1$s')"</span>);</div><div class="line">            }</div><div class="line">            <span class="keyword">else</span> {</div><div class="line">                prompt(<span class="built_in">JSON</span>.stringify(reqData));</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">else</span> {</div><div class="line">            <span class="keyword">if</span> (callbackMethodName != <span class="literal">null</span>) {</div><div class="line">                reqData.callback = callbackMethodName;</div><div class="line">            }</div><div class="line">            <span class="built_in">window</span>.location = <span class="string">"chunmiao://#/"</span> + <span class="built_in">JSON</span>.stringify(reqData);</div><div class="line">        }</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发送请求入口</div><div class="line">     */</div><div class="line">    _doRequest: <span class="function"><span class="keyword">function</span> <span class="params">(action, args, callback)</span> </span>{</div><div class="line">        <span class="keyword">var</span> nReqID = <span class="keyword">this</span>.getReqID();</div><div class="line">        <span class="keyword">if</span> (callback) {</div><div class="line">            <span class="keyword">this</span>.initCallback(callback, nReqID);</div><div class="line">            <span class="keyword">this</span>._sendRequest(action, args, callbackMethodName);</div><div class="line">        }</div><div class="line">        <span class="keyword">else</span> {</div><div class="line">            <span class="keyword">this</span>._sendRequest(action, args);</div><div class="line">        }</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 发起回复</div><div class="line">     */</div><div class="line">    causeReply: <span class="function"><span class="keyword">function</span> <span class="params">(params)</span> </span>{</div><div class="line">        <span class="keyword">var</span> action = <span class="string">'REPLY'</span>;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.stringify(params);</div><div class="line">        <span class="keyword">this</span>._doRequest(action, args, <span class="keyword">this</span>.sendComment);</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 向服务器发送回复</div><div class="line">     */</div><div class="line">    sendComment: <span class="function"><span class="keyword">function</span> <span class="params">(res)</span> </span>{</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.parse(res);</div><div class="line">        <span class="keyword">try</span> {</div><div class="line">            <span class="comment">// request server api</span></div><div class="line">            <span class="built_in">window</span>[<span class="string">'send_reply'</span>](args);</div><div class="line">        } <span class="keyword">catch</span>(e) {}</div><div class="line">    },</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 回复结果状态</div><div class="line">     */</div><div class="line">    replyStatus: <span class="function"><span class="keyword">function</span> <span class="params">(res)</span> </span>{</div><div class="line">        <span class="keyword">var</span> action = <span class="string">'REPLY_RESULT'</span>;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">JSON</span>.stringify(res.status);</div><div class="line">        <span class="keyword">this</span>._doRequest(action, args);</div><div class="line">    }</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>所以我们可以这么用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 页面事件</div><div class="line"> */</div><div class="line"><span class="keyword">new</span> TapEvents({</div><div class="line">    container: $(<span class="string">'#pages-container'</span>),</div><div class="line">    preventDefault: <span class="literal">false</span>,</div><div class="line">    bind: {</div><div class="line">        <span class="string">'reply'</span>: <span class="function"><span class="keyword">function</span> <span class="params">(target)</span> </span>{</div><div class="line">            <span class="keyword">if</span> (isNa) {</div><div class="line">                deviceBridge.causeReply({</div><div class="line">                    <span class="string">'parent_id'</span>: target.attr(<span class="string">'data-id'</span>), </div><div class="line">                    <span class="string">'parent_user'</span>: target.attr(<span class="string">'data-parent-name'</span>)</div><div class="line">                });</div><div class="line">            } <span class="keyword">else</span> {</div><div class="line">                <span class="keyword">return</span>;</div><div class="line">            }</div><div class="line">        }</div><div class="line">    }</div><div class="line">});</div><div class="line"><span class="comment">/**</span></div><div class="line"> * 发起后端数据API请求方法</div><div class="line"> */</div><div class="line"><span class="keyword">var</span> send_reply = <span class="function"><span class="keyword">function</span> <span class="params">(options)</span> </span>{</div><div class="line">    $.ajax({</div><div class="line">        url: <span class="string">'/api/reply'</span>,</div><div class="line">        data: data,</div><div class="line">        type: <span class="string">'post'</span></div><div class="line">    }).done(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{</div><div class="line">        deviceBridge.replyStatus(data);</div><div class="line">    });</div><div class="line">};</div></pre></td></tr></table></figure>
+
+<p>整个流程的时序图大致是这样的：</p>
+<p><img src="/img/chunmiao-summary-evolution-of-deviceBridge/method_sequence.png" alt="时序图" style="width:882px"></p>
+<p>在换用prompt的时候，我们踩到一个坑，Android只能收到一次消息，后面的消息再也无法接收。这里要提醒的是，Android端别忘了confirm，不然就会阻塞了。</p>
+<h2 id="第三版">第三版</h2>
+<p>添加全流程标识ID；加入命名空间，统一构建所有API方法；支持新需求：在NA端直接触发回复，回复框输入，之后将回复内容塞给JS。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>{</div><div class="line">    <span class="keyword">var</span> isAndroid = <span class="regexp">/Android/</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">var</span> callbackMethodName = <span class="literal">null</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 与NA约定的Action名称</div><div class="line">     */</div><div class="line">    <span class="keyword">var</span> cmdMap = {</div><div class="line">        causeReply: <span class="string">"REPLY"</span>,</div><div class="line">        replyStatus: <span class="string">"REPLY_RESULT"</span>,</div><div class="line">        sendComment: <span class="string">"SEND"</span></div><div class="line">    };</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 接口池</div><div class="line">     */</div><div class="line">    <span class="keyword">var</span> cmdPool = {</div><div class="line">        <span class="string">"deviceBridge.device.causeReply"</span>: <span class="function"><span class="keyword">function</span> <span class="params">(action, params)</span> </span>{</div><div class="line">            doRequest(action, params, deviceBridge.call.sendComment);</div><div class="line">        },</div><div class="line">        <span class="string">"deviceBridge.call.sendComment"</span>: <span class="function"><span class="keyword">function</span> <span class="params">(action, params)</span> </span>{</div><div class="line">            <span class="keyword">var</span> args = <span class="built_in">JSON</span>.parse(params);</div><div class="line">            <span class="keyword">if</span> (!args.actionID) {</div><div class="line">                <span class="comment">// 如果是NA直接触发回复</span></div><div class="line">                args.actionID = getReqID();</div><div class="line">            }</div><div class="line">            <span class="keyword">try</span> {</div><div class="line">                <span class="built_in">window</span>[<span class="string">'send_reply'</span>](args); <span class="comment">// request server api</span></div><div class="line">            } <span class="keyword">catch</span>(e) {}</div><div class="line">        },</div><div class="line">        <span class="string">"deviceBridge.result.replyStatus"</span>: <span class="function"><span class="keyword">function</span> <span class="params">(action, params)</span> </span>{</div><div class="line">            doRequest(action, params);</div><div class="line">        }</div><div class="line">    };</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getReqID</span> <span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">return</span> <span class="string">'_bd_'</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">    }</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">initCallback</span> <span class="params">(callback, nReqID)</span> </span>{</div><div class="line">        callbackMethodName = <span class="string">'callbackjs'</span> + nReqID;</div><div class="line">        <span class="built_in">window</span>[callbackMethodName] = <span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>{</div><div class="line">            <span class="built_in">window</span>[callbackMethodName] = <span class="literal">null</span>;</div><div class="line">            callback(res);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sendRequest</span> <span class="params">(action, nReqID, args, callbackMethodName)</span> </span>{</div><div class="line">        <span class="keyword">var</span> reqData = {</div><div class="line">            action: action,</div><div class="line">            actionID: nReqID,</div><div class="line">            args: args</div><div class="line">        };</div><div class="line">        <span class="keyword">if</span> (isAndroid) {</div><div class="line">            <span class="keyword">if</span> (callbackMethodName != <span class="literal">null</span>) {</div><div class="line">                prompt(<span class="built_in">JSON</span>.stringify(reqData), <span class="string">"javascript:"</span> + callbackMethodName + <span class="string">"('%1$s')"</span>);</div><div class="line">            }</div><div class="line">            <span class="keyword">else</span> {</div><div class="line">                prompt(<span class="built_in">JSON</span>.stringify(reqData));</div><div class="line">            }</div><div class="line">        }</div><div class="line">        <span class="keyword">else</span> {</div><div class="line">            <span class="keyword">if</span> (callbackMethodName != <span class="literal">null</span>) {</div><div class="line">                reqData.callback = callbackMethodName;</div><div class="line">            }</div><div class="line">            <span class="built_in">window</span>.location = <span class="string">"chunmiao://#/"</span> + <span class="built_in">JSON</span>.stringify(reqData);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doRequest</span> <span class="params">(action, args, callback)</span> </span>{</div><div class="line">        <span class="keyword">var</span> nReqID = getReqID();</div><div class="line">        <span class="keyword">if</span> (callback) {</div><div class="line">            initCallback(callback, nReqID);</div><div class="line">            sendRequest(action, nReqID, args, callbackMethodName);</div><div class="line">        }</div><div class="line">        <span class="keyword">else</span> {</div><div class="line">            sendRequest(action, nReqID, args);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 注册命名空间</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ns</span> <span class="params">(namespace, owner)</span> </span>{</div><div class="line">        <span class="keyword">var</span> names = namespace.split(<span class="string">"."</span>);</div><div class="line">        owner = owner || <span class="built_in">window</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; names.length; i++) {</div><div class="line">            <span class="keyword">var</span> packageName = names[i];</div><div class="line">            owner[packageName] = owner[packageName] || {};</div><div class="line">            owner = owner[packageName];</div><div class="line">        }</div><div class="line">        <span class="keyword">return</span> owner;</div><div class="line">    }</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 固化参数Action名</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">currying</span> <span class="params">(fn, cmd)</span> </span>{</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>{</div><div class="line">            <span class="keyword">var</span> args = [cmd];</div><div class="line">            args.push.apply(args, <span class="built_in">arguments</span>);</div><div class="line">            <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, args);</div><div class="line">        }</div><div class="line">    }</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 生成方法</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bindFn</span> <span class="params">(cmdStr, fn)</span> </span>{</div><div class="line">        <span class="keyword">var</span> parts = cmdStr.split(<span class="string">"."</span>);</div><div class="line">        <span class="keyword">var</span> method = parts.pop();</div><div class="line">        <span class="keyword">var</span> prefix = parts.join(<span class="string">"."</span>);</div><div class="line">        <span class="keyword">var</span> namespace = ns(prefix);</div><div class="line">        namespace[method] = currying(fn, cmdMap[method]);</div><div class="line">    }</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 构建接口</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">buildInterface</span> <span class="params">()</span> </span>{</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> cmdPool) {</div><div class="line">            bindFn(key, cmdPool[key]);</div><div class="line">        }</div><div class="line">    }</div><div class="line"></div><div class="line">    buildInterface();</div><div class="line">})();</div></pre></td></tr></table></figure>
+
+<p>我们在向服务器发送数据请求的时候，也需要记住当前流程的ID</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> send_reply = <span class="function"><span class="keyword">function</span> <span class="params">(params)</span> </span>{</div><div class="line">    <span class="keyword">var</span> actionID = params.actionID;</div><div class="line">    <span class="keyword">var</span> data = params.data;</div><div class="line">    $.ajax({</div><div class="line">        url: <span class="string">'/api/reply'</span>,</div><div class="line">        data: data,</div><div class="line">        type: <span class="string">'post'</span></div><div class="line">    }).done(<span class="function"><span class="keyword">function</span><span class="params">(data)</span></span>{</div><div class="line">        <span class="keyword">var</span> res = <span class="built_in">JSON</span>.stringify({</div><div class="line">            actionID: actionID,</div><div class="line">            status: data.status</div><div class="line">        });</div><div class="line">        deviceBridge.result.replyStatus(res);</div><div class="line">    });</div><div class="line">};</div></pre></td></tr></table></figure>
+
+<h2 id="后续优化">后续优化</h2>
+<ol>
+<li>优化回调函数，采用dispatch方法统一分发响应。</li>
+<li>添加错误处理机制。</li>
+<li>增加调试模式，方便前端在浏览器调试代码。<br>…</li>
+</ol>
+
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/tags/work/">
+                #work
+              </a>
+            
+              <a href="/tags/front-end/">
+                #front end
+              </a>
+            
+              <a href="/tags/summary/">
+                #summary
+              </a>
+            
+              <a href="/tags/js/">
+                #js
+              </a>
+            
+              <a href="/tags/native/">
+                #native
+              </a>
+            
+          </div>
+        
+
+        
+          <div class="post-nav">
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2015/02/22/chunmiao-summary-cooperation/">春苗项目小结之合作沟通篇</a>
+              
+            </div>
+          </div>
+        
+
+        
+        
+      </div>
+    
+  </div>
+
+
+
+  
+    <div class="comments" id="comments">
+      
+        <div class="ds-thread" data-thread-key="2015/03/04/chunmiao-summary-evolution-of-deviceBridge/"
+             data-title="春苗项目小结之deviceBridge的进化之路" data-url="http://ianwith.github.io/2015/03/04/chunmiao-summary-evolution-of-deviceBridge/">
+        </div>
+
+      
+    </div>
+  
+
+          </div>
+
+          
+        </div>
+
+        
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+          Table Of Contents
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          Overview
+        </li>
+      </ul>
+    
+
+    <div class="site-overview">
+      <div class="site-author motion-element">
+        <img class="site-author-image" src="/img/avatar.jpg" alt="Ian Gong" />
+        <p class="site-author-name">Ian Gong</p>
+      </div>
+      <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
+      <div class="site-state motion-element">
+        <div class="site-state-item site-state-posts">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </div>
+        <div class="site-state-item site-state-tags">
+            <span class="site-state-item-count">12</span>
+            <span class="site-state-item-name">tags</span>
+        </div>
+        <div class="site-state-item site-state-pages">
+            <span class="site-state-item-count">2</span>
+            <span class="site-state-item-name">pages</span>
+        </div>
+      </div>
+
+      
+        <div class="feed-link motion-element">
+          <a href="/atom.xml">
+            <i class="menu-item-icon icon-feed"></i>
+            RSS
+          </a>
+        </div>
+      
+
+      <div class="links-of-author motion-element">
+        
+          
+            <span class="links-of-author-item">
+              <a href="https://github.com/ianwith">GitHub</a>
+            </span>
+          
+            <span class="links-of-author-item">
+              <a href="http://weibo.com/u/2713077571">Weibo</a>
+            </span>
+          
+            <span class="links-of-author-item">
+              <a href="https://www.linkedin.com/in/ianwith">Linkedin</a>
+            </span>
+          
+        
+      </div>
+
+      
+      
+        <div class="cc-license motion-element">
+          <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+            <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+          </a>
+        </div>
+      
+
+    </div>
+
+    
+      <div class="post-toc-wrap sidebar-panel-active">
+        <div class="post-toc-indicator-top post-toc-indicator"></div>
+        <div class="post-toc">
+          
+          
+            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一版"><span class="nav-number">1.</span> <span class="nav-text">第一版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二版"><span class="nav-number">2.</span> <span class="nav-text">第二版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三版"><span class="nav-number">3.</span> <span class="nav-text">第三版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后续优化"><span class="nav-number">4.</span> <span class="nav-text">后续优化</span></a></li></ol></div>
+          
+        </div>
+        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+      </div>
+    
+
+  </div>
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Ian Gong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".fancybox").fancybox();
+    });
+  </script>
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebatToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebatToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      /*
+      var $tocContent = $('.post-toc-content');
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
+        setTimeout(function () {
+          $('.sidebar-toggle').trigger('click');
+        }, 800);
+      }
+      */
+    });
+  </script>
+
+
+
+
+  
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"gyian"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+  
+</body>
+</html>
