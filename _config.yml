@@ -107,6 +107,6 @@ social:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type: github
+  type: git
   repo: https://github.com/ianwith/ianwith.github.io.git
   branch: master
