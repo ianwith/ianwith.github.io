@@ -8,13 +8,13 @@ tags:
 categories: work
 ---
 
-Recently, Our team opened a series of front-end training courses inside the company. These courses aim to teach everyone the basics of front-end programming skills. We encourage all interested colleagues especially Back-end developers, iOS developers, Android developers to enroll in the course. By offering a series of lessons featured with lectures, real-world cases, and hands-on exercises, we covered practical topics like basic HTML, SCSS Introduction, Exploring ECMAScript, Workflow of Front-end in Douban, etc.
+Recently, Our team opened a series of front-end training courses inside the company. These courses aimed to teach everyone the basics of front-end programming skills. We encouraged all interested colleagues especially back-end developers, iOS developers, Android developers to enroll in the courses. By offering a series of lessons featured with lively lectures, real-world cases, and hands-on exercises, we covered many practical topics like *Basic HTML*, *SCSS Introduction*, *Exploring ECMAScript*, *Workflow of Front-end in Douban*, etc.
 
-Front-end technology is widely used in desktop and mobile applications. Learning and applying fundamental concepts benefits for enhancing the efficiency of development and cooperation.
+Front-end technologies are widely used in desktop and mobile applications. Learning and applying fundamental concepts benefits for enhancing the efficiency of development and cooperation.
 
 <!-- more -->
 
-My topic was about the Layouts for Mobile Screens. Although the following demos are simple, they helped me recall W3C standards. We had a lot of fun with CSS.
+My topic was the *Layouts for Mobile Screens*. Here is an outline of my presentation. Although the following demos are simple, they helped me recall W3C standards. We had a lot of fun with CSS.
 
 ## Table of contents:
 
