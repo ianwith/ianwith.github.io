@@ -76,7 +76,7 @@ pagination_dir: page
 # Disqus
 disqus_shortname:
 
-duoshuo_shortname: gyian
+duoshuo_shortname:
 
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
@@ -96,12 +96,12 @@ sitemap:
 # NexT theme config
 creative_commons: by-sa
 baidu_analytics: 6953c5a013d77b1370405b68f4ae62dc
-avatar: /img/avatar.jpg
+avatar: /img/avatar_v2.jpg
 since: 2014
 social:
   GitHub: https://github.com/ianwith
-  Weibo: http://weibo.com/u/2713077571
   Linkedin: https://www.linkedin.com/in/ianwith
+  Douban: https://www.douban.com/people/59990720
 # End NexT theme config
 
 # Deployment
