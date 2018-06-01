@@ -1,11 +1,13 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-next">
+<html class="theme-next use-motion ">
 <head>
   
 
 <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
 
 
 
@@ -13,19 +15,41 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
 
 
     <meta name="description" content="Ian's Blog | ian | ianwith" />
 
 
 
-	<meta name="keywords" content="work,front end,summary,experience,cooperation," />
+  <meta name="keywords" content="work,front end,summary,chunmiao,experience,cooperation," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6953c5a013d77b1370405b68f4ae62dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
   <title> 春苗项目小结之合作沟通篇 // Ian's Blog </title>
 </head>
 
 <body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
@@ -44,6 +68,7 @@
 
 
   <ul id="menu" class="menu">
+     
     
       
       <li class="menu-item menu-item-home">
@@ -54,18 +79,18 @@
       </li>
     
       
-      <li class="menu-item menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          Archives
-        </a>
-      </li>
-    
-      
       <li class="menu-item menu-item-categories">
         <a href="/categories">
           <i class="menu-item-icon icon-categories"></i> <br />
           Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
         </a>
       </li>
     
@@ -87,12 +112,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-            
-          
 
-          <div id="posts" class="posts-expand">
-            
-  
+  <div id="posts" class="posts-expand">
+    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -111,48 +133,35 @@
 
       <div class="post-meta">
         <span class="post-time">
-          
-            Posted on 2015-02-22
-          
+          Posted on 2015-02-22
         </span>
 
         
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
-              
-                <a href="/categories/work/">work</a>
-
-                
-                
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/work/">work</a>
 
               
-            </span>
-          
-        
+              
 
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/02/22/chunmiao-summary-cooperation/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/22/chunmiao-summary-cooperation/"></span>
-            </a>
+            
           </span>
+        
+
+        
           
         
       </div>
     </div>
 
-    
-      <div class="post-body">
+    <div class="post-body">
 
-        
-        
+      
+      
 
-        
-          <h2 id="和UE沟通">和UE沟通</h2>
-<p>在文库做两个项目过程中，都有被UE劈头痛批的经历，这是我在之前从未体验过的。我想了一下，出现这种沟通问题的原因在以下两个方面：</p>
+      
+        <p>##和UE沟通<br>在文库做两个项目过程中，都有被UE劈头痛批的经历，这是我在之前从未体验过的。我想了一下，出现这种沟通问题的原因在以下两个方面：</p>
 <ol>
 <li><p><strong>工作性质</strong>：这个要拿我之前在广研的经历来比较了，由于之前在邮箱做的是重构工作，和设计师走的很近，像是相亲相爱的一家人，从来没出现过这种问题。而现在不同了，我们FE是属于研发联盟，这意味着，做事的方式和流程都会有很大的不同。<br>具体一点说：做重构，我们和设计师直接沟通，（几乎）随时沟通，我们甚至可以跟设计师提出自己对某个设计的看法。而做研发，有两个重要的不同点，一是<strong>过程</strong>：开发之前，一份设计稿定稿并标注明了；开发之后上线之前，反馈UE走查确认效果；开发过程中，UE不会全程跟着你改。二是<strong>方式</strong>：UE不直接跟工程师沟通，而由PM充当中间人的角色。开发时发现缺什么图了，跟PM说，PM找UE补；交互设计有矛盾了，UE找PM确认，PM确认无误再给研发。少数情况下，页面中细小的细节，UE可以和研发直接沟通。  </p>
 <a id="more"></a>
@@ -167,8 +176,7 @@
 <li><p><strong>建立完整的设计规范</strong>。这是针对第二点需要做的事。UI规范，为什么这个很重要呢，是因为这可以在减少不必要的沟通成本，加快研发速度。有了规范不是终点，大家都认同规范的重要性，照着规范去做才是我们要达到的目的。这里我需要检讨下。<br>另外就是标注好必要的细节，这是为了页面设计细节在UI规范里找不到答案的情况下，工程师也能顺利的对着设计稿写样式，省去多余的取色，量间距的环节。而且这事也需要放到流程规范里去完善，如果有详尽的标注文件，交付开发，那最后出现偏差，就有证据说明是谁的问题了。</p>
 </li>
 </ol>
-<h2 id="和QA沟通">和QA沟通</h2>
-<p>在春苗测试的过程中，我们需要频繁的接受测试给的反馈。这次的项目我感觉总体来讲和QA同学合作比较愉快，但是也有些注意事项需要记录。</p>
+<p>##和QA沟通<br>在春苗测试的过程中，我们需要频繁的接受测试给的反馈。这次的项目我感觉总体来讲和QA同学合作比较愉快，但是也有些注意事项需要记录。</p>
 <ol>
 <li><p><strong>细读MRD</strong>。MRD即需求管理文档，这份文档会详细的描述产品的细节。通常来讲，对于一个前端页面，文档会对页面的不同区块分别展开描述，比如具体的交互效果描述，极端情况下（如没有数据，数据溢出）的展现。一般来说QA会根据这份文档比对各种情况的不同效果。<br>我在开发的过程中，犯的一个错误就是只看设计稿而没看MRD，设计稿往往只是确定页面在标准情况下的样子，而页面最终在不同用户手中会有各种不同的展现，举例来说，譬如没有登录，那么用户信息区块只显示足迹；如果没发表帖子，那么主页帖子页面也不能空空如也，如果是管理员，那么可能有额外的操作按钮。设计稿往往不能将这些情况全部考虑到，这就需要我们从MRD里找。这就避免测试阶段，QA发现各种我们没考虑到的问题。</p>
 </li>
@@ -177,8 +185,7 @@
 <li><p><strong>转换语言</strong>。这里指的是当QA跟你讲述，或向你询问一个问题可能的原因时，用尽量通俗的语言描述实现的环节是怎样的，最终应该是怎样的，而不该是怎样的。有的时候QA可能会武断的给一个bug的产生下结论，他看不到代码实现的复杂流程是怎样的，不知道这个bug和其他bug的相关性。当我们解释的时候，千万不能带有炫耀的想法拖长沟通的内容，简单明了为佳。<br>其实这一点讲的是和测试同学交流的一些技巧，我倒还是很乐意为测试同学解释问题的。记得有次QA跑来说他那边node服务挂了，我这边跑的好好的啊，查了半天代码也没问题啊。作为开发要尽责嘛，协助QA一起追查原因，最后定位到QA造数据时写的php代码的问题，导致传给node的数据格式不对了。这虽然是QA对代码的理解错误导致的，但找到原因前谁也不知道原因的，这就需要耐心沟通，乐意协助，逐步排除了。</p>
 </li>
 </ol>
-<h2 id="和PM沟通">和PM沟通</h2>
-<p>这次我参与的项目中和PM的沟通都挺顺畅的，可能是我参与进来较晚，没有完全参加前期的需求评审的缘故。所以对于这一点我体会并没有那么深，但组内同学有经历过一些问题，并且对此开过研讨会议，所以觉得有必要把会议记录贴上来。</p>
+<p>##和PM沟通<br>这次我参与的项目中和PM的沟通都挺顺畅的，可能是我参与进来较晚，没有完全参加前期的需求评审的缘故。所以对于这一点我体会并没有那么深，但组内同学有经历过一些问题，并且对此开过研讨会议，所以觉得有必要把会议记录贴上来。</p>
 <pre>
 理想的H5&NA项目流程
 
@@ -219,178 +226,174 @@ deadline
 
 <p>觉得其中最有体会的是需求评审的时候需要“<strong>走心</strong>”，多参与进去，这是我一直做的不好的地方。当PM在解释需求的时候，我一言不发，就不可能真正理解需求的设计，在开发过程中就会遇到问题。只有多想，多发问，才能掌握具体的设计细节，PM也能评估出可行性。<br>还有就是<strong>临上线</strong>阶段，前面第一部分已经描述过，我在视觉走查阶段吃的亏。其实这个问题换个角度，放到更大的范围讨论，就是要把握deadline这个点。我们安排工作的时候，不要眼盯着deadline去做，而需要给自己定一个稍提前于deadline的时间点，这样就留下一个缓冲的时间段，便于让问题提早暴露，顺利解决而不拖延最后的上线。<br>上线后还有一点需要补充的是，我们要有<strong>责任意识</strong>。前端工程师不该只是把页面扔上线就觉得完成任务了，我们需要像运维工程师那样时时关注线上问题，及时处理和规避风险。这点扩展开来还有很多，就不属于和PM沟通的范畴了。目前就这么多啦。</p>
 
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/work/">
-                #work
-              </a>
-            
-              <a href="/tags/front-end/">
-                #front end
-              </a>
-            
-              <a href="/tags/summary/">
-                #summary
-              </a>
-            
-              <a href="/tags/experience/">
-                #experience
-              </a>
-            
-              <a href="/tags/cooperation/">
-                #cooperation
-              </a>
-            
-          </div>
-        
-
-        
-          <div class="post-nav">
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2015/03/04/chunmiao-summary-evolution-of-deviceBridge/">春苗项目小结之deviceBridge的进化之路</a>
-              
-            </div>
-
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2015/02/16/chunmiao-summary-modularization/">春苗项目小结之模块化与组件化</a>
-              
-            </div>
-          </div>
-        
-
-        
-        
-      </div>
-    
-  </div>
-
-
-
-  
-    <div class="comments" id="comments">
-      
-        <div class="ds-thread" data-thread-key="2015/02/22/chunmiao-summary-cooperation/"
-             data-title="春苗项目小结之合作沟通篇" data-url="http://ianwith.github.io/2015/02/22/chunmiao-summary-cooperation/">
-        </div>
-
       
     </div>
-  
 
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/work/"> #work </a>
+          
+            <a href="/tags/front-end/"> #front end </a>
+          
+            <a href="/tags/summary/"> #summary </a>
+          
+            <a href="/tags/chunmiao/"> #chunmiao </a>
+          
+            <a href="/tags/experience/"> #experience </a>
+          
+            <a href="/tags/cooperation/"> #cooperation </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/03/04/chunmiao-summary-evolution-of-deviceBridge/">春苗项目小结之deviceBridge的进化之路</a>
+            
           </div>
 
-          
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/02/16/chunmiao-summary-modularization/">春苗项目小结之模块化与组件化</a>
+            
+          </div>
         </div>
+      
 
-        
-<div class="sidebar-toggle">
-  <div class="sidebar-toggle-line-wrap">
-    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      
+      
+    </div>
   </div>
-</div>
 
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-inner">
+
 
     
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-          Table Of Contents
-        </li>
-        <li class="sidebar-nav-overview" data-target="site-overview">
-          Overview
-        </li>
-      </ul>
-    
-
-    <div class="site-overview">
-      <div class="site-author motion-element">
-        <img class="site-author-image" src="/img/avatar.jpg" alt="Ian Gong" />
-        <p class="site-author-name">Ian Gong</p>
-      </div>
-      <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
-      <div class="site-state motion-element">
-        <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">posts</span>
-        </div>
-        <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">12</span>
-            <span class="site-state-item-name">tags</span>
-        </div>
-        <div class="site-state-item site-state-pages">
-            <span class="site-state-item-count">2</span>
-            <span class="site-state-item-name">pages</span>
-        </div>
-      </div>
-
-      
-        <div class="feed-link motion-element">
-          <a href="/atom.xml">
-            <i class="menu-item-icon icon-feed"></i>
-            RSS
-          </a>
-        </div>
-      
-
-      <div class="links-of-author motion-element">
+      <div class="comments" id="comments">
         
-          
-            <span class="links-of-author-item">
-              <a href="https://github.com/ianwith">GitHub</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="http://weibo.com/u/2713077571">Weibo</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="https://www.linkedin.com/in/ianwith">Linkedin</a>
-            </span>
-          
+      </div>
+    
+  </div>
+
+
+        </div>
+
         
       </div>
 
+
       
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
       
-        <div class="cc-license motion-element">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-            <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
-          </a>
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong" />
+          <p class="site-author-name">Ian Gong</p>
+        </div>
+        <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/ianwith" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.linkedin.com/in/ianwith" target="_blank">Linkedin</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.douban.com/people/59990720" target="_blank">Douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
         </div>
       
 
     </div>
-
-    
-      <div class="post-toc-wrap sidebar-panel-active">
-        <div class="post-toc-indicator-top post-toc-indicator"></div>
-        <div class="post-toc">
-          
-          
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#和UE沟通"><span class="nav-number">1.</span> <span class="nav-text">和UE沟通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和QA沟通"><span class="nav-number">2.</span> <span class="nav-text">和QA沟通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和PM沟通"><span class="nav-number">3.</span> <span class="nav-text">和PM沟通</span></a></li></ol></div>
-          
-        </div>
-        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-      </div>
-    
-
   </div>
-</div>
 
 
-      </div>
     </div>
 
     <div id="footer" class="footer">
@@ -398,7 +401,7 @@ deadline
         <div class="copyright">
   
   &copy; &nbsp;  2014 - 
-  2015
+  2018
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
@@ -433,9 +436,25 @@ deadline
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(".fancybox").fancybox();
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
     });
   </script>
+
 
   <script type="text/javascript">
   function hasMobileUA () {
@@ -460,6 +479,12 @@ deadline
 
   function escapeSelector (selector) {
     return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
   }
 </script>
 
@@ -496,7 +521,7 @@ deadline
     var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
 
     LogoAndMenuMotion();
-    sidebatToggleMotion();
+    sidebarToggleMotion();
     postsListMotion();
     backToTopMotion();
 
@@ -570,7 +595,7 @@ deadline
       $('.post').velocity('transition.slideDownIn', postMotionOptions);
     }
 
-    function sidebatToggleMotion () {
+    function sidebarToggleMotion () {
       sidebarToggle.on('click', function () {
         isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
         isSidebarVisible = !isSidebarVisible;
@@ -908,39 +933,34 @@ deadline
       });
 
       // Expand sidebar on post detail page by default, when post has a toc.
-      /*
-      var $tocContent = $('.post-toc-content');
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
-        setTimeout(function () {
-          $('.sidebar-toggle').trigger('click');
-        }, 800);
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
       }
-      */
     });
   </script>
 
 
 
 
-  
-
-  
-
-  
-    
-  
-
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gyian"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    var HEXO_SIDEBAR_CONFIGURATION = 'hide';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
   </script>
+
+  
+
+  
+  
+  
+
+  
+
+
+
 
   
   

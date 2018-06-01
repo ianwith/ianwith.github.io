@@ -1,11 +1,13 @@
 <!doctype html>
-<html class="theme-next use-motion theme-next-next">
+<html class="theme-next use-motion ">
 <head>
   
 
 <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
 
 
 
@@ -13,19 +15,41 @@
   <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.0"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
 
 
     <meta name="description" content="Ian's Blog | ian | ianwith" />
 
 
 
-	<meta name="keywords" content="work,front end,summary,css," />
+  <meta name="keywords" content="work,front end,summary,chunmiao,css," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6953c5a013d77b1370405b68f4ae62dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
 
   <title> 春苗项目小结之一个列表的几种实现 // Ian's Blog </title>
 </head>
 
 <body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
   <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
@@ -44,6 +68,7 @@
 
 
   <ul id="menu" class="menu">
+     
     
       
       <li class="menu-item menu-item-home">
@@ -54,18 +79,18 @@
       </li>
     
       
-      <li class="menu-item menu-item-archives">
-        <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
-          Archives
-        </a>
-      </li>
-    
-      
       <li class="menu-item menu-item-categories">
         <a href="/categories">
           <i class="menu-item-icon icon-categories"></i> <br />
           Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br />
+          Archives
         </a>
       </li>
     
@@ -87,12 +112,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-            
-          
 
-          <div id="posts" class="posts-expand">
-            
-  
+  <div id="posts" class="posts-expand">
+    
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -111,57 +133,43 @@
 
       <div class="post-meta">
         <span class="post-time">
-          
-            Posted on 2015-01-14
-          
+          Posted on 2015-01-14
         </span>
 
         
-          
-            <span class="post-category">
-              &nbsp; | &nbsp; In
-              
-                <a href="/categories/work/">work</a>
-
-                
-                
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/work/">work</a>
 
               
-            </span>
-          
-        
+              
 
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/01/14/chunmiao-summary-solutions-to-a-list/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/14/chunmiao-summary-solutions-to-a-list/"></span>
-            </a>
+            
           </span>
+        
+
+        
           
         
       </div>
     </div>
 
-    
-      <div class="post-body">
+    <div class="post-body">
 
-        
-        
+      
+      
 
-        
-          <p>前一阵子花了很多时间做了<a href="http://chunmiao.baidu.com/" target="_blank" rel="external">春苗家长</a>，最近有时间来做个小结，首先讲的是在做个人主页左侧列表时的几种方法试验。实际的效果可以到春苗个人主页查看。下面我为了突出主要部分，把列表适当简化下，假定我们要实现这样的一个列表：<br><img src="/img/chunmiao-summary-solutions-to-a-list/list_result.png" alt="列表效果" style="width:150px;"><br>这个列表看着挺简单的，但做的时候发现为了找到最优解还是花了一番功夫的。我认为这里主要的矛盾在于分割线和hover背景的实现。下面就说说采用如下的同一套HTML结构，我的五种不同的方法尝试。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cnt"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="title">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"first"</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>我的资料<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>我的帖子<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>我的收藏<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>账号设置<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></pre></td></tr></table></figure>
-
+      
+        <p>前一阵子花了很多时间做了<a href="http://chunmiao.baidu.com/" target="_blank" rel="noopener">春苗家长</a>，最近有时间来做个小结，首先讲的是在做个人主页左侧列表时的几种方法试验。实际的效果可以到春苗个人主页查看。下面我为了突出主要部分，把列表适当简化下，假定我们要实现这样的一个列表：<br><img src="/img/chunmiao-summary-solutions-to-a-list/list_result.png" alt="列表效果" style="width:150px;"><br>这个列表看着挺简单的，但做的时候发现为了找到最优解还是花了一番功夫的。我认为这里主要的矛盾在于分割线和hover背景的实现。下面就说说采用如下的同一套HTML结构，我的五种不同的方法尝试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;cnt&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;li class=&quot;first&quot;&gt;&lt;a href=&quot;#&quot;&gt;我的资料&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我的帖子&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;我的收藏&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;账号设置&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="方法一：">方法一：</h2>
+<p>##方法一：</p>
 <p>先说最容易最先想到的办法，使用伪元素做分隔线。</p>
 <div data-height="268" data-theme-id="12285" data-slug-hash="QwQOML" data-default-tab="css" data-user="ianwith" class="codepen"><pre><code>.cnt{<br>  width: 150px;<br>  height: 300px;<br>  padding-top: 50px;<br>  background-color: #505767;<br>}<br>ul{<br>  padding: 0;<br>  margin: 0;<br>  list-style: none;<br>}<br>li{<br>  text-align: center;<br>  background-color: #505767;<br>}<br>li::after{<br>  display: block;<br>  content: &#x27;&#x27;;<br>  height: 0;<br>  margin: 0 10px;<br>  border-top: 3px solid #575e6d;<br>}<br>li.first::before{<br>  display: block;<br>  content: &#x27;&#x27;;<br>  height: 0;<br>  margin: 0 10px;<br>  border-top: 3px solid #575e6d;<br>}<br>a{<br>  display: block;<br>  height: 46px;<br>  line-height: 46px;<br>  color: #ffffff;<br>  text-decoration: none;<br>}<br>a:hover{<br>  background-color: #484f5e;<br>}</code></pre></div>
 
 <p>兼容性处理：</p>
 <p>很明显，ie8以下不支持伪元素，ie8也只支持老的伪元素写法<code>:after</code>。欲达到全浏览器兼容的效果，可以额外开一个标签来实现分隔线。但是这样子缺点更明显，需要增加无语义的标签。因此尽量不用。</p>
-<h2 id="方法二：">方法二：</h2>
+<p>##方法二：</p>
 <p>第二种办法，利用li的hover效果实现背景色的改变，a链接元素的border实现分割线。a元素使用负margin-bottom使边框超出父元素li，同时li设置一个和背景同色，与a边框等宽的border，给a的边框留出空间。</p>
 <div data-height="268" data-theme-id="12285" data-slug-hash="ogEyKW" data-default-tab="css" data-user="ianwith" class="codepen"><pre><code>.cnt{<br>  width: 150px;<br>  height: 300px;<br>  padding-top: 50px;<br>  background-color: #505767;<br>}<br>ul{<br>  padding: 0;<br>  margin: 0;<br>  list-style: none;<br>}<br>li{<br>  text-align: center;<br>  background-color: #505767;<br>  border-bottom: 3px solid #505767;<br>  *height: 46px;<br>}<br>li.first{<br>  border-top: 3px solid #505767;<br>}<br>li:hover{<br>  background-color: #484f5e;<br>}<br>a{<br>  display: block;<br>  height: 46px;<br>  line-height: 46px;<br>  color: #ffffff;<br>  text-decoration: none;<br>  margin: 0 10px;<br>  border-bottom: 3px solid #575e6d;<br>  margin-bottom: -3px;<br>}<br>li.first a{<br>  border-top: 3px solid #575e6d;<br>  margin-top: -3px;<br>}</code></pre></div>
 
@@ -170,7 +178,7 @@
 <li>ie6下，非a链接元素hover样式无效。可能的解决方案：目前css父元素选择器标准还没有浏览器去实现，要让ie6下非链接元素hover生效，只能尝试通过一些脚本实现。  </li>
 <li>ie6、7下，该方案无法得到预期的目的，子元素a的负margin-bottom对父元素高度没有任何影响，所以下边框无法超出父元素li，需要给li加一个和a等高的高度<code>*height: 46px;</code>，如此一来，ie7表现正常，但是由于ie6下子元素是始终无法溢出父元素的（下面细说），a的下边框直接隐藏了，所以还需为ie6做特别优化。考虑到这里，我发现自己一开始的思路就有误，以至于越走越偏，这是一个不成熟的方案，于是有了方案三。</li>
 </ol>
-<h2 id="方法三：">方法三：</h2>
+<p>##方法三：</p>
 <p>方法二改良版，同样给li加hover。利用父元素li的margin-bottom撑开3px的高度，给a边框留出空间，a元素使用<code>position: relative</code>，li与a等高。</p>
 <div data-height="268" data-theme-id="12285" data-slug-hash="xbYyNO" data-default-tab="css" data-user="ianwith" class="codepen"><pre><code>.cnt{<br>  width: 150px;<br>  height: 300px;<br>  padding-top: 50px;<br>  background-color: #505767;<br>}<br>ul{<br>  padding: 0;<br>  margin: 0;<br>  list-style: none;<br>}<br>li{<br>  text-align: center;<br>  background-color: #505767;<br>  height: 46px;<br>  margin-bottom: 3px;<br>  _overflow: hidden;<br>}<br>li:hover{<br>  background-color: #484f5e;<br>}<br>a{<br>  position: relative;<br>  display: block;<br>  height: 46px;<br>  line-height: 46px;<br>  color: #ffffff;<br>  text-decoration: none;<br>  margin: 0 10px;<br>  border-bottom: 3px solid #575e6d;<br>}<br>li.first a{<br>  border-top: 3px solid #575e6d;<br>  top: -3px;<br>}</code></pre></div>
 
@@ -181,7 +189,7 @@
 <li>方法二中的问题1依然存在。  </li>
 <li>这两种方法，a链接并不充满整个列表宽度，两边缘不可点击。</li>
 </ol>
-<h2 id="方法四：">方法四：</h2>
+<p>##方法四：</p>
 <p>由于两个遗留的问题，上述两种方案并不优雅，我们换一种思路。用li元素来做边框，a链接元素加hover背景色。为了要让背景色充满整个宽度，a元素可以使用绝对定位。</p>
 <div data-height="268" data-theme-id="12285" data-slug-hash="xbYMpb" data-default-tab="css" data-user="ianwith" class="codepen"><pre><code>.cnt{<br>  width: 150px;<br>  height: 300px;<br>  padding-top: 50px;<br>  background-color: #505767;<br>}<br>ul{<br>  padding: 0;<br>  margin: 0;<br>  list-style: none;<br>}<br>li{<br>  position: relative;<br>  text-align: center;<br>  background-color: #505767;<br>  margin-left: 10px;<br>  margin-right: 10px;<br>  height: 46px;<br>  border-bottom: 3px solid #575e6d;<br>  *vertical-align: middle;<br>}<br>li.first{<br>  border-top: 3px solid #575e6d;<br>}<br>a{<br>  position: absolute;<br>  color: #ffffff;<br>  text-decoration: none;<br>  line-height: 46px;<br>  left: -10px;<br>  right: -10px;<br>  _width: 150px;<br>}<br>a:hover{<br>  background-color: #484f5e;<br>}</code></pre></div>
 
@@ -190,181 +198,179 @@
 <li>这种定位方式的问题在于，ie6下，left和right不能同时生效，因此需要针对ie6加一个固定的宽度，才能使其充满。这就导致，在宽度不固定的情况下，这办法就变得不可用。</li>
 <li>ie6、7下，li之间会产生大概4像素的间距，这个间距跟border值无关，不明原因，但经过排查，初步诊断为行高的问题，给li加上<code>*vertical-align: middle</code>得以解决。</li>
 </ol>
-<h2 id="方法五：">方法五：</h2>
+<p>##方法五：</p>
 <p>此方法和上述方法异曲同工，这里利用了元素宽度不固定时，左右margin负值能把宽度撑宽的特点，使得a元素左右扩展占满整个列表宽度。</p>
 <p><div data-height="268" data-theme-id="12285" data-slug-hash="pvaGpQ" data-default-tab="css" data-user="ianwith" class="codepen"><pre><code>.cnt{<br>  width: 150px;<br>  height: 300px;<br>  padding-top: 50px;<br>  background-color: #505767;<br>}<br>ul{<br>  padding: 0;<br>  margin: 0;<br>  list-style: none;<br>}<br>li{<br>  text-align: center;<br>  background-color: #505767;<br>  border-bottom: 3px solid #575e6d;<br>  margin-left: 10px;<br>  margin-right: 10px;<br>}<br>li.first{<br>  border-top: 3px solid #575e6d;<br>}<br>a{<br>  display: block;<br>  color: #ffffff;<br>  text-decoration: none;<br>  line-height: 46px;<br>  margin-left: -10px;<br>  margin-right: -10px;<br>}<br>a:hover{<br>  background-color: #484f5e;<br>}</code></pre></div><script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
 <p>兼容性处理：</p>
 <p>这个方法唯一的一个问题，就是ie6下，鼠标只有悬浮到文字上是才会出hover状态。但是这个hover态背景是充满整个宽度的，所以这个问题并不是很大。要解决的话，可以给a加宽度<code>_width: 150px;</code>来解决。</p>
 <p>可见这个办法看似简单，得到的效果却很好，没有遗留问题，十分优雅！一开始怎么没想到呢～其实，如果基础足够扎实，应该一眼就能看出最好的解决方案。如果大家有更好的方法，一定要记得告诉我～</p>
 
-        
-      </div>
-    
-
-    
-      <div class="post-footer">
-        
-          <div class="post-tags">
-            
-              <a href="/tags/work/">
-                #work
-              </a>
-            
-              <a href="/tags/front-end/">
-                #front end
-              </a>
-            
-              <a href="/tags/summary/">
-                #summary
-              </a>
-            
-              <a href="/tags/css/">
-                #css
-              </a>
-            
-          </div>
-        
-
-        
-          <div class="post-nav">
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2015/02/16/chunmiao-summary-modularization/">春苗项目小结之模块化与组件化</a>
-              
-            </div>
-
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2014/11/17/first-post-in-beijing/">开篇，在北京</a>
-              
-            </div>
-          </div>
-        
-
-        
-        
-      </div>
-    
-  </div>
-
-
-
-  
-    <div class="comments" id="comments">
-      
-        <div class="ds-thread" data-thread-key="2015/01/14/chunmiao-summary-solutions-to-a-list/"
-             data-title="春苗项目小结之一个列表的几种实现" data-url="http://ianwith.github.io/2015/01/14/chunmiao-summary-solutions-to-a-list/">
-        </div>
-
       
     </div>
-  
 
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/work/"> #work </a>
+          
+            <a href="/tags/front-end/"> #front end </a>
+          
+            <a href="/tags/summary/"> #summary </a>
+          
+            <a href="/tags/chunmiao/"> #chunmiao </a>
+          
+            <a href="/tags/css/"> #css </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/16/chunmiao-summary-modularization/">春苗项目小结之模块化与组件化</a>
+            
           </div>
 
-          
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/11/17/first-post-in-beijing/">开篇，在北京</a>
+            
+          </div>
         </div>
+      
 
-        
-<div class="sidebar-toggle">
-  <div class="sidebar-toggle-line-wrap">
-    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+      
+      
+    </div>
   </div>
-</div>
 
-<div id="sidebar" class="sidebar">
-  <div class="sidebar-inner">
+
 
     
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-          Table Of Contents
-        </li>
-        <li class="sidebar-nav-overview" data-target="site-overview">
-          Overview
-        </li>
-      </ul>
-    
-
-    <div class="site-overview">
-      <div class="site-author motion-element">
-        <img class="site-author-image" src="/img/avatar.jpg" alt="Ian Gong" />
-        <p class="site-author-name">Ian Gong</p>
-      </div>
-      <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
-      <div class="site-state motion-element">
-        <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">5</span>
-          <span class="site-state-item-name">posts</span>
-        </div>
-        <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">12</span>
-            <span class="site-state-item-name">tags</span>
-        </div>
-        <div class="site-state-item site-state-pages">
-            <span class="site-state-item-count">2</span>
-            <span class="site-state-item-name">pages</span>
-        </div>
-      </div>
-
-      
-        <div class="feed-link motion-element">
-          <a href="/atom.xml">
-            <i class="menu-item-icon icon-feed"></i>
-            RSS
-          </a>
-        </div>
-      
-
-      <div class="links-of-author motion-element">
+      <div class="comments" id="comments">
         
-          
-            <span class="links-of-author-item">
-              <a href="https://github.com/ianwith">GitHub</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="http://weibo.com/u/2713077571">Weibo</a>
-            </span>
-          
-            <span class="links-of-author-item">
-              <a href="https://www.linkedin.com/in/ianwith">Linkedin</a>
-            </span>
-          
+      </div>
+    
+  </div>
+
+
+        </div>
+
         
       </div>
 
+
       
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
       
-        <div class="cc-license motion-element">
-          <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-            <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
-          </a>
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong" />
+          <p class="site-author-name">Ian Gong</p>
+        </div>
+        <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/ianwith" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.linkedin.com/in/ianwith" target="_blank">Linkedin</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.douban.com/people/59990720" target="_blank">Douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
         </div>
       
 
     </div>
-
-    
-      <div class="post-toc-wrap sidebar-panel-active">
-        <div class="post-toc-indicator-top post-toc-indicator"></div>
-        <div class="post-toc">
-          
-          
-            <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一："><span class="nav-number">1.</span> <span class="nav-text">方法一：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二："><span class="nav-number">2.</span> <span class="nav-text">方法二：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三："><span class="nav-number">3.</span> <span class="nav-text">方法三：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法四："><span class="nav-number">4.</span> <span class="nav-text">方法四：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法五："><span class="nav-number">5.</span> <span class="nav-text">方法五：</span></a></li></ol></div>
-          
-        </div>
-        <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-      </div>
-    
-
   </div>
-</div>
 
 
-      </div>
     </div>
 
     <div id="footer" class="footer">
@@ -372,7 +378,7 @@
         <div class="copyright">
   
   &copy; &nbsp;  2014 - 
-  2015
+  2018
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>
@@ -407,9 +413,25 @@
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-      $(".fancybox").fancybox();
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
     });
   </script>
+
 
   <script type="text/javascript">
   function hasMobileUA () {
@@ -434,6 +456,12 @@
 
   function escapeSelector (selector) {
     return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
   }
 </script>
 
@@ -470,7 +498,7 @@
     var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
 
     LogoAndMenuMotion();
-    sidebatToggleMotion();
+    sidebarToggleMotion();
     postsListMotion();
     backToTopMotion();
 
@@ -544,7 +572,7 @@
       $('.post').velocity('transition.slideDownIn', postMotionOptions);
     }
 
-    function sidebatToggleMotion () {
+    function sidebarToggleMotion () {
       sidebarToggle.on('click', function () {
         isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
         isSidebarVisible = !isSidebarVisible;
@@ -882,39 +910,34 @@
       });
 
       // Expand sidebar on post detail page by default, when post has a toc.
-      /*
-      var $tocContent = $('.post-toc-content');
-      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && isDesktop()) {
-        setTimeout(function () {
-          $('.sidebar-toggle').trigger('click');
-        }, 800);
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
       }
-      */
     });
   </script>
 
 
 
 
-  
-
-  
-
-  
-    
-  
-
   <script type="text/javascript">
-    var duoshuoQuery = {short_name:"gyian"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
+    var HEXO_SIDEBAR_CONFIGURATION = 'hide';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
   </script>
+
+  
+
+  
+  
+  
+
+  
+
+
+
 
   
   
