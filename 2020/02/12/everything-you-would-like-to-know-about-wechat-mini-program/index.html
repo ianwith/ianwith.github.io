@@ -1,0 +1,1034 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2">
+
+
+    <meta name="description" content="Ian's Blog | ian | ianwith">
+
+
+
+  <meta name="keywords" content="front end,Mini Program,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2">
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6953c5a013d77b1370405b68f4ae62dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <title> Everything You Would Like to Know About WeChat Mini Program // Ian's Blog </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Ian's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br>
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br>
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br>
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br>
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Everything You Would Like to Know About WeChat Mini Program
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2020-02-12
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/work/">work</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="Product-Positioning"><a href="#Product-Positioning" class="headerlink" title="Product Positioning"></a>Product Positioning</h2><p>WeChat Mini Programs are a new way of connecting users and services. They are easy to access and share on WeChat, delivering an excellent user experience.</p>
+<h2 id="What-are-the-differences-between-WeChat-js-sdk-weui-and-Mini-Program"><a href="#What-are-the-differences-between-WeChat-js-sdk-weui-and-Mini-Program" class="headerlink" title="What are the differences between WeChat js-sdk, weui, and Mini Program."></a>What are the differences between WeChat js-sdk, weui, and Mini Program.</h2><p><a href="https://developers.weixin.qq.com/doc/offiaccount/en/OA_Web_Apps/JS_SDK.html" target="_blank" rel="noopener">WeChat js-sdk</a> is a web development kit based on WeChat provided by WeChat public platform for web developers. By using WeChat js-sdk, web developers can effectively use the capabilities of WeChat to take photos, select pictures, voice, location and other mobile phone systems, and directly use WeChat sharing, scan, card coupons, payment and other WeChat-specific capabilities to provide better web experience for WeChat users. You can think of WeChat js-sdk as our LIFF.</p>
+<p><a href="https://weui.io/" target="_blank" rel="noopener">weui</a> is a UI library by WeChat official design team. weui has <a href="https://github.com/Tencent/weui" target="_blank" rel="noopener">an ordinary web (HTML/CSS/JS) version</a> and <a href="https://github.com/Tencent/weui-wxss/" target="_blank" rel="noopener">a Mini Program version</a>. Basically, it contains only styles and has no functionality of WeChat js-sdk.</p>
+<p>Mini Program is a more advanced solution, which takes one step forward from an ordinary mobile Web page. As you know, Mini Program provides a set of languages to let developers build more powerful apps within WeChat platform. The merits(from the user and developer perspective) are:</p>
+<ul>
+<li>Fast loading</li>
+<li>More powerful capabilities</li>
+<li>Native experience</li>
+<li>Easy and secure WeChat data exposure</li>
+<li>Efficient and simple development</li>
+</ul>
+<p>For more details – <a href="https://developers.weixin.qq.com/miniprogram/en/dev/framework/quickstart/#About-Mini-Programs%5D(https://developers.weixin.qq.com/miniprogram/en/dev/framework/quickstart/%23About-Mini-Programs" target="_blank" rel="noopener">About Mini Programs</a></p>
+<a id="more"></a>
+
+<h2 id="How-do-you-access-Mini-Programs"><a href="#How-do-you-access-Mini-Programs" class="headerlink" title="How do you access Mini Programs?"></a>How do you access Mini Programs?</h2><p>From almost everywhere, e.g. a QR code from offline or online, WeChat’s drag down view(recently visited and my favorites will be listed here), “Search” box of WeChat, “Discover” tab of WeChat, WeChat public/official accounts, a chat message someone shared with you.</p>
+<img src="/img/everything-you-would-like-to-know-about-wechat-mini-program/qrcode.jpg" alt="Access Mini Programs" style="width:260px">
+
+<h2 id="Steps-from-registering-developing-to-publishing-your-Mini-Programs"><a href="#Steps-from-registering-developing-to-publishing-your-Mini-Programs" class="headerlink" title="Steps from registering, developing to publishing your Mini Programs."></a>Steps from registering, developing to publishing your Mini Programs.</h2><h4 id="1-Register"><a href="#1-Register" class="headerlink" title="1. Register"></a><em>1. Register</em></h4><p>First of all, you need to register a Mini Program Account on WeChat Official Accounts Platform official website. This is kind of like Apple Developer account, you can register as Individual or Company or other entity types.</p>
+<h4 id="2-Mini-Program-information-is-perfect"><a href="#2-Mini-Program-information-is-perfect" class="headerlink" title="2. Mini Program information is perfect"></a><em>2. Mini Program information is perfect</em></h4><p>After registration, log in to the Mini Program admin console to complete the Mini Program’s Information and prepare for development. (refer to step 1 in the picture)</p>
+<img src="/img/everything-you-would-like-to-know-about-wechat-mini-program/step2.png" alt="Step 2" style="width:600px">
+
+<h4 id="3-Develop-Mini-Programs"><a href="#3-Develop-Mini-Programs" class="headerlink" title="3. Develop Mini Programs"></a><em>3. Develop Mini Programs</em></h4><p>Download Wechat DevTools. You can develop Mini Program using your own editor as you like, It’s no different than normal web development. However, with Wechat DevTools you can develop and debug Mini Program easily. Here is what it looks like:</p>
+<img src="/img/everything-you-would-like-to-know-about-wechat-mini-program/step3.png" alt="Step 3" style="width:600px">
+
+<h4 id="4-Submit-review"><a href="#4-Submit-review" class="headerlink" title="4. Submit review"></a><em>4. Submit review</em></h4><p>After development, you can upload your code to Cloud by pressing the “upload” button in DevTools. Then go to the Mini Program admin console to see your uploaded versions, you can do versions management like: set v1.1.0 to beta preview, after preview is fine, submit v1.1.0 to WeChat team for review.</p>
+<img src="/img/everything-you-would-like-to-know-about-wechat-mini-program/step4.png" alt="Step 4" style="width:600px">
+
+<h4 id="5-Release-it-after-passing-review"><a href="#5-Release-it-after-passing-review" class="headerlink" title="5. Release it after passing review"></a><em>5. Release it after passing review</em></h4><p>In my experience, the WeChat team’s review takes approximately from two hours to half a day. After the code of a Mini Program is approved, just press the “Release” button and here we go.</p>
+<h2 id="Technical-Overview"><a href="#Technical-Overview" class="headerlink" title="Technical Overview"></a>Technical Overview</h2><h4 id="Q-What-does-a-typical-Mini-Program-project-consist-of"><a href="#Q-What-does-a-typical-Mini-Program-project-consist-of" class="headerlink" title="Q: What does a typical Mini Program project consist of?"></a>Q: What does a typical Mini Program project consist of?</h4><p>Here is a basic structure of Mini Program project.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├── app.js // app level logic</span><br><span class="line">├── app.json // app level configurations for Mini Program</span><br><span class="line">├── app.wxss // optional, common style sheet</span><br><span class="line">├── pages</span><br><span class="line">│   │── index // an index page</span><br><span class="line">│   │   ├── index.wxml // template of index page</span><br><span class="line">│   │   ├── index.js // javascript logic of index page</span><br><span class="line">│   │   ├── index.json // page level configurations for index page</span><br><span class="line">│   │   └── index.wxss // style sheet of index page</span><br><span class="line">│   └── logs</span><br><span class="line">│       ├── logs.wxml</span><br><span class="line">│       └── logs.js</span><br><span class="line">└── utils</span><br></pre></td></tr></table></figure>
+
+<h4 id="Q-What-configuration-does-the-app-json-file-contain"><a href="#Q-What-configuration-does-the-app-json-file-contain" class="headerlink" title="Q: What configuration does the app.json file contain?"></a>Q: What configuration does the app.json file contain?</h4><p>For example, you can determine page file paths and window behaviors, set the network timeout, and set multiple tabs. reference <a href="https://developers.weixin.qq.com/miniprogram/en/dev/reference/configuration/app.html" target="_blank" rel="noopener">configuration</a></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"pages"</span>: [ <span class="comment">// The page path list. e.g. There are two pages in this Mini Program.</span></span><br><span class="line">    <span class="string">"pages/index/index"</span>,</span><br><span class="line">    <span class="string">"pages/logs/index"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"window"</span>: &#123; <span class="comment">// Window is used to set the Mini Program status bar, navigation bar, titles, and window background colors.</span></span><br><span class="line">    <span class="attr">"navigationBarTitleText"</span>: <span class="string">"Demo"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"tabBar"</span>: &#123; <span class="comment">// Behavior of the tab bar at the bottom of the page.</span></span><br><span class="line">    <span class="attr">"list"</span>: [&#123;</span><br><span class="line">      <span class="attr">"pagePath"</span>: <span class="string">"pages/index/index"</span>,</span><br><span class="line">      <span class="attr">"text"</span>: <span class="string">"Home"</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      <span class="attr">"pagePath"</span>: <span class="string">"pages/logs/logs"</span>,</span><br><span class="line">      <span class="attr">"text"</span>: <span class="string">"Log"</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"networkTimeout"</span>: &#123;</span><br><span class="line">    <span class="attr">"request"</span>: <span class="number">10000</span>,</span><br><span class="line">    <span class="attr">"downloadFile"</span>: <span class="number">10000</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"debug"</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">"navigateToMiniProgramAppIdList"</span>: [</span><br><span class="line">    <span class="string">"wxe5f52902cf4de896"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Q-What-does-the-app-js-contain"><a href="#Q-What-does-the-app-js-contain" class="headerlink" title="Q: What does the app.js contain?"></a>Q: What does the app.js contain?</h4><p>You can think of it as the entrance to run the Mini Program. Developers call App() method in app.js, which is used to register a Mini Program app instance. Each Mini Program has only one app instance. In App() method, you can link the lifecycle callback function, error listening function, page not found listening function, and the like.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line">App(&#123;</span><br><span class="line">  onLaunch (options) &#123;</span><br><span class="line">    <span class="comment">// Do something initial when launch.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onShow (options) &#123;</span><br><span class="line">    <span class="comment">// Do something when show.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onHide () &#123;</span><br><span class="line">    <span class="comment">// Do something when hide.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onError (msg) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(msg)</span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">  globalData: <span class="string">'I am global data'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Q-How-do-I-write-a-page"><a href="#Q-How-do-I-write-a-page" class="headerlink" title="Q: How do I write a page?"></a>Q: How do I write a page?</h4><p>A page usually consists of four files: wxml + wxss + js +json. See the following example.</p>
+<p>You should call Page() method in js file to register a page instance, then you specify the initial data of the page, the lifecycle callback function, the event handling function…</p>
+<p>You should use WXML to define page structure. you might notice that the syntax is heavily inspired by VueJS.</p>
+<p>Additionally, don’t forget to use WXSS to define styles, and use json file to configure the window behaviors of this page.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--wxml index.wxml--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:if</span>=<span class="string">"&#123;&#123;view == 'WEBVIEW'&#125;&#125;"</span>&gt;</span> WEBVIEW <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:elif</span>=<span class="string">"&#123;&#123;view == 'APP'&#125;&#125;"</span>&gt;</span> APP <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">wx:else</span>=<span class="string">"&#123;&#123;view == 'MINA'&#125;&#125;"</span>&gt;</span> MINA <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">bindtap</span>=<span class="string">"onMyOwnHandler"</span>&gt;</span>Try to change data<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.js</span></span><br><span class="line">Page(&#123;</span><br><span class="line">  data: &#123;</span><br><span class="line">    view: <span class="string">'MINA'</span></span><br><span class="line">  &#125;</span><br><span class="line">    onLoad: <span class="function"><span class="keyword">function</span>(<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do some initialize when page load.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onReady: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something when page ready.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  onShow: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Do something when page show.</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">  onMyOwnHandler(item) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setData(&#123; <span class="attr">view</span>: <span class="string">"WEBVIEW"</span> &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** index.wxss **/</span></span><br><span class="line"><span class="keyword">@import</span> <span class="string">"common.wxss"</span>;</span><br><span class="line"><span class="selector-tag">view</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#333333</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Q-What-is-WXML-WXSS"><a href="#Q-What-is-WXML-WXSS" class="headerlink" title="Q: What is WXML/WXSS?"></a>Q: What is WXML/WXSS?</h4><p>WXML stands for WeiXin Markup Language. It’s a markup language invented by WeChat and can be used to build the page structure. <a href="https://developers.weixin.qq.com/miniprogram/en/dev/reference/wxml/" target="_blank" rel="noopener">WXML reference</a></p>
+<p>WXSS stands for WeiXin Style Sheets. It’s a set of style languages that describe WXML component styles. It has most of the features of CSS but also incorporates some new features and modifications.</p>
+<h4 id="Q-What-components-WXML-tags-can-I-use"><a href="#Q-What-components-WXML-tags-can-I-use" class="headerlink" title="Q: What components(WXML tags) can I use?"></a>Q: What components(WXML tags) can I use?</h4><p><a href="https://developers.weixin.qq.com/miniprogram/en/dev/component/" target="_blank" rel="noopener">official documents</a><br>Please refer to the above documentation for a complete list of components.<br>The syntax of writing a component is consistent with writing HTML. A component comes with some features and basic WeChat styles, but developers have a lot of freedom to style their own components with WXML/WXSS, just like HTML/CSS. Basically, most components are rendered as the web elements(dom), some components are implemented as native components for better performance and user experience.<br>Give the following most frequently used components as example.</p>
+<ol>
+<li>View Containers</li>
+</ol>
+<ul>
+<li>view (View Container, it’s just like div tag in HTML)</li>
+<li>scroll-view (A scrollable view container)</li>
+<li>swiper (A sliding view container)</li>
+</ul>
+<ol start="2">
+<li>Basic Components</li>
+</ol>
+<ul>
+<li>icon (A icon with WeChat style, you can specify color, types, size)</li>
+<li>progress (Progress bar)</li>
+<li>rich-text (Rich text is rendered by specifying HTML nodes, useful for articles or blogs)</li>
+<li>text (Simple text)</li>
+</ul>
+<ol start="3">
+<li>Form Components</li>
+</ol>
+<ul>
+<li>button</li>
+<li>checkbox</li>
+<li>input (serves as a native component only in focus)</li>
+<li>picker-view</li>
+<li>textarea (native component)</li>
+</ul>
+<ol start="4">
+<li>Navigators</li>
+</ol>
+<ul>
+<li>navigator</li>
+</ul>
+<ol start="5">
+<li>Media Components</li>
+</ol>
+<ul>
+<li>image</li>
+<li>audio</li>
+<li>video (native component)</li>
+<li>camera (native component)</li>
+</ul>
+<ol start="6">
+<li>Map (native component)</li>
+<li>Canvas (native component)</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“section”</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“section__title”</span>&gt;</span>flex-direction: row<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“flex-wrp”</span> <span class="attr">style</span>=<span class="string">“flex-direction:row;”</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“flex-item</span> <span class="attr">bc_green</span>”&gt;</span>1<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“flex-item</span> <span class="attr">bc_red</span>”&gt;</span>2<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">“flex-item</span> <span class="attr">bc_blue</span>”&gt;</span>3<span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Q-Can-I-customize-my-own-component"><a href="#Q-Can-I-customize-my-own-component" class="headerlink" title="Q: Can I customize my own component?"></a>Q: Can I customize my own component?</h4><p>Yes, you can. If you compare WXML to HTML, you can think of custom components as web components. <a href="https://developers.weixin.qq.com/miniprogram/en/dev/framework/custom-component/wxml-wxss.html" target="_blank" rel="noopener">custom-component reference</a></p>
+<h4 id="Q-Can-web-front-end-code-run-in-Mini-Program-Conversely-can-Mini-Program-code-run-in-a-web-browser"><a href="#Q-Can-web-front-end-code-run-in-Mini-Program-Conversely-can-Mini-Program-code-run-in-a-web-browser" class="headerlink" title="Q: Can web front-end code run in Mini Program? Conversely, can Mini Program code run in a web browser?"></a>Q: Can web front-end code run in Mini Program? Conversely, can Mini Program code run in a web browser?</h4><p>Unfortunately, both answers are NO. Although WXML/WXSS is similar to HTML/CSS at first glance, but they are still different. However, the transition from Web development to Mini Program development involves a low cost for front-end developers. Additionally, developers can use isomorphic frameworks/tools like <a href="https://github.com/wechat-miniprogram/kbone" target="_blank" rel="noopener">kbone</a> to make web code run in Mini Program without any changes.</p>
+<h4 id="Q-If-I-want-to-use-functionalities-like-scanCode-Login-Network-Request-WebSocket-WeChat-Pay-getUserInfo-setNavigationBarTitle-setBackgroundColor-createAnimation-etc-How-do-I-do-that"><a href="#Q-If-I-want-to-use-functionalities-like-scanCode-Login-Network-Request-WebSocket-WeChat-Pay-getUserInfo-setNavigationBarTitle-setBackgroundColor-createAnimation-etc-How-do-I-do-that" class="headerlink" title="Q: If I want to use functionalities like scanCode, Login, Network Request, WebSocket, WeChat Pay, getUserInfo, setNavigationBarTitle, setBackgroundColor, createAnimation, etc. How do I do that?"></a>Q: If I want to use functionalities like scanCode, Login, Network Request, WebSocket, WeChat Pay, getUserInfo, setNavigationBarTitle, setBackgroundColor, createAnimation, etc. How do I do that?</h4><p>Yes, Mini Program provides plenty of APIs to complete these features. <a href="https://developers.weixin.qq.com/miniprogram/en/dev/api/" target="_blank" rel="noopener">API reference</a></p>
+<h4 id="Q-How-does-Mini-Program-work-in-runtime-Is-Mini-Program-running-in-a-WebView"><a href="#Q-How-does-Mini-Program-work-in-runtime-Is-Mini-Program-running-in-a-WebView" class="headerlink" title="Q: How does Mini Program work in runtime? Is Mini Program running in a WebView?"></a>Q: How does Mini Program work in runtime? Is Mini Program running in a WebView?</h4><p>The runtime environment of Mini Program can be divided into a rendering layer and a logic layer. WXML templates and WXSS styles are used in the rendering layer and JavaScripts logic in the logic layer. These two layers are managed via two threads: the rendering layer renders its interfaces using WebView threads, while the logic layer runs the JavaScripts with JsCore threads.</p>
+<p>Basically, the two threads(WebView and JsCore) run in the same time, and when they need to communicate with each other, all the communication will be transferred via the WeChat app(refer to “Native” in the following picture). For example, when <code>setData</code> is called in js logic in order to update the page display with new data, WeChat app will be responsible for sending the data from JsCore thread to WebView thread.</p>
+<img src="/img/everything-you-would-like-to-know-about-wechat-mini-program/runtime.png" alt="Runtime" style="width:600px">
+
+<p>The underlying implementations of the Logic Layer and Rendering Layer vary by environment.</p>
+<table>
+<thead>
+<tr>
+<th>Runtime Environment</th>
+<th>Logic Layer</th>
+<th>Rendering Layer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>iOS</td>
+<td>JavaScriptCore</td>
+<td>WKWebView</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>V8m</td>
+<td>Chromium custom kernel(self-developed engine)</td>
+</tr>
+<tr>
+<td>WeChat DevTools</td>
+<td>NWJS</td>
+<td>Chrome WebView</td>
+</tr>
+</tbody></table>
+<h4 id="Q-Why-Mini-Program-uses-this-kind-of-two-threads-technic-instead-of-just-using-WebView"><a href="#Q-Why-Mini-Program-uses-this-kind-of-two-threads-technic-instead-of-just-using-WebView" class="headerlink" title="Q: Why Mini Program uses this kind of two-threads technic instead of just using WebView?"></a>Q: Why Mini Program uses this kind of two-threads technic instead of just using WebView?</h4><p>We know that, in web front-end development, rendering threads and scripting threads are mutually exclusive, that is to say, UI rendering and JavaScripts run alternately in the same thread, so long-time script running may make a page unresponsive.</p>
+<p>So Mini Program uses a two-thread model in order to make the page respond faster. Many optimizations have been made to Mini Program to reduce data transfer between the two threads. Meanwhile, the rendering layer at the bottom of the page stack is gradually collected when the number of layers becomes high.</p>
+<p>On the other hand, the pattern of running Mini Program code in separate threads provides better security performance, e.g. displaying open-data components in a manner that ensures user privacy.</p>
+<h4 id="Q-What-is-the-mechanism-of-Mini-Programs-for-caching-and-updating"><a href="#Q-What-is-the-mechanism-of-Mini-Programs-for-caching-and-updating" class="headerlink" title="Q: What is the mechanism of Mini Programs for caching and updating?"></a>Q: What is the mechanism of Mini Programs for caching and updating?</h4><p>For caching, when a user first launches a Mini Program, all resources related to the user interface are downloaded to WeChat’s local storage. As this increases the storage space occupied by WeChat, the maximum size of a single file package that developers can upload is limited to 2MB, with the total size of all packages not exceed 8 MB. In such a case, developers are encouraged to build Mini Program into different sub-packages and load them as needed.</p>
+<p>For updating, Case 1: sometimes Mini Program updates when it is deactivated, WeChat app will check at several time points if the new version of Mini Program exists locally, if yes, the Mini Program will be automatically updated to the latest version in next launch. It may take at most 24 hours to send the new version data to all the users(Updates timing is uncertain, in my experience, it takes only minutes). Case 2: sometimes Mini Program checks updates when cold startup, if a new version exists, the code package of the new version will be downloaded asynchronously and it will be started with the local client package, which means the new version of the Mini Program will not be applied until the next cold startup.</p>
+<h4 id="Q-What-are-the-limitations-of-developing-Mini-Program"><a href="#Q-What-are-the-limitations-of-developing-Mini-Program" class="headerlink" title="Q: What are the limitations of developing Mini Program?"></a>Q: What are the limitations of developing Mini Program?</h4><p>The functionality provided by default Mini Program framework is powerful, most of UI and features that can be implemented on the web applications can be implemented on Mini Program.</p>
+<p>However, to be honest, the development experience of Mini Program is not so good at first. Due to some technical restrictions like the absence of DOM APIs and limited language set, developers are not able to use modern front-end libraries like jQuery, React, etc.</p>
+<h4 id="Q-I-don’t-want-to-use-the-default-framework-is-there-any-other-choice"><a href="#Q-I-don’t-want-to-use-the-default-framework-is-there-any-other-choice" class="headerlink" title="Q: I don’t want to use the default framework, is there any other choice?"></a>Q: I don’t want to use the default framework, is there any other choice?</h4><p>Yes, thanks to the active community, we now have dozens of frameworks built for you to write Mini Programs using modern web languages. Here are some examples: TinaJS(simply based on the default framework), Wepy(modern, in a component way), MPVue(for VueJS developers), Taro(for React developers). Taro is the one I use the most, it lets you write Mini Program entirely in React way, and the app code you write can be compiled to Web, WeChat Mini Program or even for react native apps(with single code base).<br>Here is a good article about frameworks: <a href="https://medium.com/le-wagon/wechat-mini-programs-which-development-framework-choose-in-2018-6ae493d6fea0" target="_blank" rel="noopener">WeChat mini programs — which development framework choose in 2018?</a></p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/front-end/"> #front end </a>
+          
+            <a href="/tags/Mini-Program/"> #Mini Program </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/18/shadow-dom-styling-notes/">Shadow DOM Styling Notes</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/19/photos-of-australia/">Photos of Australia</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong">
+          <p class="site-author-name">Ian Gong</p>
+        </div>
+        <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/ianwith" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.linkedin.com/in/ianwith" target="_blank">Linkedin</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.douban.com/people/59990720" target="_blank">Douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Product-Positioning"><span class="nav-number">1.</span> <span class="nav-text">Product Positioning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-are-the-differences-between-WeChat-js-sdk-weui-and-Mini-Program"><span class="nav-number">2.</span> <span class="nav-text">What are the differences between WeChat js-sdk, weui, and Mini Program.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-do-you-access-Mini-Programs"><span class="nav-number">3.</span> <span class="nav-text">How do you access Mini Programs?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Steps-from-registering-developing-to-publishing-your-Mini-Programs"><span class="nav-number">4.</span> <span class="nav-text">Steps from registering, developing to publishing your Mini Programs.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Register"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Register</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Mini-Program-information-is-perfect"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. Mini Program information is perfect</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Develop-Mini-Programs"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. Develop Mini Programs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Submit-review"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. Submit review</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Release-it-after-passing-review"><span class="nav-number">4.0.5.</span> <span class="nav-text">5. Release it after passing review</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Technical-Overview"><span class="nav-number">5.</span> <span class="nav-text">Technical Overview</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-does-a-typical-Mini-Program-project-consist-of"><span class="nav-number">5.0.1.</span> <span class="nav-text">Q: What does a typical Mini Program project consist of?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-configuration-does-the-app-json-file-contain"><span class="nav-number">5.0.2.</span> <span class="nav-text">Q: What configuration does the app.json file contain?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-does-the-app-js-contain"><span class="nav-number">5.0.3.</span> <span class="nav-text">Q: What does the app.js contain?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-How-do-I-write-a-page"><span class="nav-number">5.0.4.</span> <span class="nav-text">Q: How do I write a page?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-is-WXML-WXSS"><span class="nav-number">5.0.5.</span> <span class="nav-text">Q: What is WXML/WXSS?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-components-WXML-tags-can-I-use"><span class="nav-number">5.0.6.</span> <span class="nav-text">Q: What components(WXML tags) can I use?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Can-I-customize-my-own-component"><span class="nav-number">5.0.7.</span> <span class="nav-text">Q: Can I customize my own component?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Can-web-front-end-code-run-in-Mini-Program-Conversely-can-Mini-Program-code-run-in-a-web-browser"><span class="nav-number">5.0.8.</span> <span class="nav-text">Q: Can web front-end code run in Mini Program? Conversely, can Mini Program code run in a web browser?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-If-I-want-to-use-functionalities-like-scanCode-Login-Network-Request-WebSocket-WeChat-Pay-getUserInfo-setNavigationBarTitle-setBackgroundColor-createAnimation-etc-How-do-I-do-that"><span class="nav-number">5.0.9.</span> <span class="nav-text">Q: If I want to use functionalities like scanCode, Login, Network Request, WebSocket, WeChat Pay, getUserInfo, setNavigationBarTitle, setBackgroundColor, createAnimation, etc. How do I do that?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-How-does-Mini-Program-work-in-runtime-Is-Mini-Program-running-in-a-WebView"><span class="nav-number">5.0.10.</span> <span class="nav-text">Q: How does Mini Program work in runtime? Is Mini Program running in a WebView?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-Why-Mini-Program-uses-this-kind-of-two-threads-technic-instead-of-just-using-WebView"><span class="nav-number">5.0.11.</span> <span class="nav-text">Q: Why Mini Program uses this kind of two-threads technic instead of just using WebView?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-is-the-mechanism-of-Mini-Programs-for-caching-and-updating"><span class="nav-number">5.0.12.</span> <span class="nav-text">Q: What is the mechanism of Mini Programs for caching and updating?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-What-are-the-limitations-of-developing-Mini-Program"><span class="nav-number">5.0.13.</span> <span class="nav-text">Q: What are the limitations of developing Mini Program?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Q-I-don’t-want-to-use-the-default-framework-is-there-any-other-choice"><span class="nav-number">5.0.14.</span> <span class="nav-text">Q: I don’t want to use the default framework, is there any other choice?</span></a></li></ol></li></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2020
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Ian Gong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'hide';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+  
+</body>
+</html>

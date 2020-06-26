@@ -1,36 +1,36 @@
 <!doctype html>
 <html class="theme-next use-motion ">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   
 
-<meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
 
 
-<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2"/>
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2">
 
 
-    <meta name="description" content="Ian's Blog | ian | ianwith" />
-
-
-
-  <meta name="keywords" content="work,front end,summary,rexxar,hybrid,mobile," />
+    <meta name="description" content="Ian's Blog | ian | ianwith">
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml" />
+  <meta name="keywords" content="work,front end,summary,rexxar,hybrid,mobile,">
 
 
 
-  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2" />
+  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2">
 
 
 
@@ -73,7 +73,7 @@
       
       <li class="menu-item menu-item-home">
         <a href="/">
-          <i class="menu-item-icon icon-home"></i> <br />
+          <i class="menu-item-icon icon-home"></i> <br>
           Home
         </a>
       </li>
@@ -81,7 +81,7 @@
       
       <li class="menu-item menu-item-categories">
         <a href="/categories">
-          <i class="menu-item-icon icon-categories"></i> <br />
+          <i class="menu-item-icon icon-categories"></i> <br>
           Categories
         </a>
       </li>
@@ -89,7 +89,7 @@
       
       <li class="menu-item menu-item-archives">
         <a href="/archives">
-          <i class="menu-item-icon icon-archives"></i> <br />
+          <i class="menu-item-icon icon-archives"></i> <br>
           Archives
         </a>
       </li>
@@ -97,7 +97,7 @@
       
       <li class="menu-item menu-item-tags">
         <a href="/tags">
-          <i class="menu-item-icon icon-tags"></i> <br />
+          <i class="menu-item-icon icon-tags"></i> <br>
           Tags
         </a>
       </li>
@@ -168,8 +168,10 @@
 <li><a href="https://github.com/douban/rexxar-web" target="_blank" rel="noopener">Rexxar Web SDK</a></li>
 </ul>
 <p>The word Rexxar is originally from Warcraft. Rexxar is one of the warriors who had been formed from a union between orcs and ogres.</p>
-<p><img src="/img/introducing-rexxar/logo_cartoon.png" alt="Logo cartoon" style="border:0;width:382px"></p>
+<img src="/img/introducing-rexxar/logo_cartoon.png" alt="Logo cartoon" style="border:0;width:382px">
+
 <a id="more"></a>
+
 <h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>Before Rexxar, we had several hybrid pages in Douban App, which were extremely simple and primitive. One common way to do this, is to open online web sites, which has disadvantages like slow speed and bad user experience. Another way, that is at the opposite extreme, we put the offline HTMLs into the app, and make ajax calls for the data, which speed up the initial loading but still lose the flexibility of web technology.</p>
 <h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>We mainly work on Douban App. With the expansion of product line, engineering team spent more and more time supporting both iOS, Android and Web. Meanwhile, we need to keep iterating fast. Delivering new feature every two weeks pushed us to think about efficiencies and costs.</p>
 <p>Different features and pages are distributed in our App. Many of them user-generated articles and reviews. These are rich text pages which are more of content displaying than complex animation. It is appropriate to use web technologies.</p>
@@ -186,15 +188,19 @@
 <p>Moreover, Rexxar is <strong>scalable</strong>. We design two levels of granularity that are full-rexxar view and partial-rexxar view. The full-rexxar means that the full page is implemented and controlled by Rexxar, while the partial-rexxar view refers to a page which could not run independently and should be combined with some native part.</p>
 <h2 id="Technical-Overview"><a href="#Technical-Overview" class="headerlink" title="Technical Overview"></a>Technical Overview</h2><p>Let’s take a deep look at Rexxar. The three fundamental concepts are: <strong>Route</strong>, <strong>Container</strong>, <strong>Web</strong>.</p>
 <p>First comes <strong>Route</strong>. In a Rexxar app, each page can be identified by a unique URI. We serve the URI mapping in the routes.json. Client should check the routes periodically via GET request and save the latest version in the cache. At runtime, while receiving a URI call, client asks for routes to determine which page is about to open. This process is called Route, here is how it works.</p>
-<p><img src="/img/introducing-rexxar/route.png" alt="Route" style="border:0;margin:40px auto;"></p>
+<img src="/img/introducing-rexxar/route.png" alt="Route" style="border:0;margin:40px auto;">
+
 <p><strong>Container</strong>, as its name would suggest, is a container for WebView. It is responsible for serving HTML pages locally. Moreover, Container intercepts all requests from WebView. For static assets such as JavaScript and CSS files, Container caches them for faster access on the next visit. For API requests, Container runs Decorator, which can be used to modify HTTP requests like adding an authorization header. Finally, Container gives web pages access to native features. These are called Extensions. Extensions can be divided into two types: UI widgets and data services.</p>
-<p><img src="/img/introducing-rexxar/container.png" alt="Container" style="border:0;width:500px;margin:40px auto;"></p>
+<img src="/img/introducing-rexxar/container.png" alt="Container" style="border:0;width:500px;margin:40px auto;">
+
 <p>The last part is <strong>Web</strong>. This part provides handy interfaces for developing Rexxar pages. We hides implementation detail of interaction with multiple platforms, so that developers just need to focus on product features. The way we write Rexxar pages is exactly the same as building SPAs: writing HTML &amp; CSS, making request to fetch data, and rendering data to DOM. You can choose any front-end framework you like as there is no limit. Additionally, you can easily access extensions for native-like user experience.</p>
 <p>Let me further elaborate on extensions. Each extension is designed to be cross-platform, while providing unified interface. The code you write just works perfectly on web platform. For implementation of UI widgets and data services, I’m going to give one example of each type.</p>
 <p>This is a widget implementing pull-to-refresh:</p>
-<p><img src="/img/introducing-rexxar/widget.png" alt="Widget" style="border:0;width:500px;margin:40px auto;"></p>
+<img src="/img/introducing-rexxar/widget.png" alt="Widget" style="border:0;width:500px;margin:40px auto;">
+
 <p>Another one is a GEO API:</p>
-<p><img src="/img/introducing-rexxar/data_api.png" alt="Data API" style="border:0;width:500px;margin:40px auto;"></p>
+<img src="/img/introducing-rexxar/data_api.png" alt="Data API" style="border:0;width:500px;margin:40px auto;">
+
 <h2 id="Workflow"><a href="#Workflow" class="headerlink" title="Workflow"></a>Workflow</h2><p>What does the workflow from development to deployment looks like?</p>
 <p><strong>Development</strong> with Rexxar is easy, you set up a modern web application project as you usually do, and choose your favourite technology stack. At Douban, we are big fans of React.js. React is used with CSS-Modules to make reusable components. Meanwhile, we use webpack and gulp to process our modular projects, output HTML files and routes.json. As for debugging, start a local server and open pages in a browser like Chrome to inspect UI elements, test responsive design, etc. And even better, It is convenient to debug remotely, just switch to in-app mode, configure your application to use local routes.json and then you can check pages inside your application running on simulators or real devices. With hot module replacement enabled, you can reload your pages instantly every time you make a change without recompiling your app. It not only speed up your development times, but also helps designers quickly and easily review.</p>
 <p>The key to <strong>deployment</strong> is to serve static HTMLs and the routes. Since Rexxar pages are static and don’t rely on server-side code, these HTMLs can be distributed instead of living on a server. Serving directly from a CDN unlocks speeds and performance. We take the following steps:</p>
@@ -203,9 +209,12 @@
 <li>Publishing them to CDN;</li>
 <li>Serving the routes.</li>
 </ul>
-<p>The routes in JSON format is as follows:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"items"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"remote_file"</span>: <span class="string">"https://path_to_cdn/dist/rexxar/demo-252452ae58.html"</span>,</span><br><span class="line">      <span class="attr">"uri"</span>: <span class="string">"douban://douban.com/rexxar_demo[/]?.*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"partial_items"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"remote_file"</span>: <span class="string">"https://path_to_cdn/dist/rexxar/demo-252452ae58.html"</span>,</span><br><span class="line">      <span class="attr">"uri"</span>: <span class="string">"douban://partial.douban.com/rexxar_demo/_.*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>The routes in JSON format is as follows:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"items"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"remote_file"</span>: <span class="string">"https://path_to_cdn/dist/rexxar/demo-252452ae58.html"</span>,</span><br><span class="line">      <span class="attr">"uri"</span>: <span class="string">"douban://douban.com/rexxar_demo[/]?.*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"partial_items"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">"remote_file"</span>: <span class="string">"https://path_to_cdn/dist/rexxar/demo-252452ae58.html"</span>,</span><br><span class="line">      <span class="attr">"uri"</span>: <span class="string">"douban://partial.douban.com/rexxar_demo/_.*"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Notice that, after finishing development, you will need to fully test your changes before releasing it to your users. So, iterating on a pre-release branch is essential. Usually, QA engineers should tell you if it stable enough to publish.</p>
-<p><img src="/img/introducing-rexxar/deployment.png" alt="Deployment" style="border:0;"></p>
+<img src="/img/introducing-rexxar/deployment.png" alt="Deployment" style="border:0;">
+
 <h2 id="What’s-Next"><a href="#What’s-Next" class="headerlink" title="What’s Next"></a>What’s Next</h2><p>Rexxar brings the ease of web technologies into mobile application development and eliminates the cost and complexity of supporting multiple platforms. However, as we know, rendering with DOM is much slower than native components. Rexxar is not intent on being a replacement for iOS/Android development. After more than a year of experiment, we are convinced that it should be a great fit for your project in particular use cases. We are looking forward to your trial if it’s right for the job, and eager to hear your feedback.</p>
 <p>By now, we enjoy the advantages of flexible delivery and rapid iteration that had never been achieved before, yet there are issues to be solved. The infrastructure is still incomplete. We will continuously invest in infrastructure in order to improve developer experiences. Future works may include creating a better release system, error monitoring and crash reporting tools. As our projects grow large, it is also necessary to dig deeper into performance and parallel development.</p>
 
@@ -294,14 +303,14 @@
 
       <div class="site-overview">
         <div class="site-author motion-element">
-          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong" />
+          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong">
           <p class="site-author-name">Ian Gong</p>
         </div>
         <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -315,7 +324,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -353,7 +362,7 @@
         
           <div class="cc-license motion-element">
             <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
-              <img src="/images/cc-by-sa.svg" alt="Creative Commons" />
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
             </a>
           </div>
         
@@ -384,7 +393,7 @@
         <div class="copyright">
   
   &copy; &nbsp;  2014 - 
-  2018
+  2020
   <span class="with-love">
     <i class="icon-heart"></i>
   </span>

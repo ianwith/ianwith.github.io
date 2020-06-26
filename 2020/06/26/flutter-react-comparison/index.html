@@ -1,0 +1,927 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.2">
+
+
+    <meta name="description" content="Ian's Blog | ian | ianwith">
+
+
+
+  <meta name="keywords" content="front end,android,ios,flutter,react,cross platform,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ian's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.2">
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?6953c5a013d77b1370405b68f4ae62dc";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  <title> Flutter React Comparison // Ian's Blog </title>
+</head>
+
+<body>
+<!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">Ian's Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+
+  <ul id="menu" class="menu">
+     
+    
+      
+      <li class="menu-item menu-item-home">
+        <a href="/">
+          <i class="menu-item-icon icon-home"></i> <br>
+          Home
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-categories">
+        <a href="/categories">
+          <i class="menu-item-icon icon-categories"></i> <br>
+          Categories
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-archives">
+        <a href="/archives">
+          <i class="menu-item-icon icon-archives"></i> <br>
+          Archives
+        </a>
+      </li>
+    
+      
+      <li class="menu-item menu-item-tags">
+        <a href="/tags">
+          <i class="menu-item-icon icon-tags"></i> <br>
+          Tags
+        </a>
+      </li>
+    
+  </ul>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Flutter React Comparison
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on 2020-06-26
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <a href="/categories/work/">work</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>In the past six months, I spent a lot of time spearheading and experimenting with Flutter, and finally implemented a multi-platform Application for data tracking which is used within LINE company. Then I took this opportunity to give a talk inside the company that introduced and promoted Flutter. Here’s the slide of the presentation.</p>
+<p><a href="https://slides.com/yanggong/flutter-intro/" target="_blank" rel="noopener">https://slides.com/yanggong/flutter-intro/</a></p>
+<a id="more"></a>
+
+<h2 id="Flutter-vs-React"><a href="#Flutter-vs-React" class="headerlink" title="Flutter vs React"></a>Flutter vs React</h2><p>The most interesting part I want to address is the comparsion between Flutter and React.</p>
+<p>As we know, Flutter was very much inspired by React. So when I tried to write the same App(UI) by using Flutter and React, I found that the code was surprisingly similar. So I think it’s a good idea for a front-end engineer to learn about Flutter by comparing the similarities and differences in writing layout of React and Flutter.</p>
+<p>Here is two demo: <a href="https://github.com/ianwith/demo_flutter" target="_blank" rel="noopener">demo_flutter</a> vs <a href="https://github.com/ianwith/demo_react" target="_blank" rel="noopener">demo_react</a></p>
+<p>Say that we are going to make a screen like this:</p>
+<img src="/img/flutter-react-comparison/demo_screen.png" alt="Demo Screen" style="width:460px">
+
+<p>First of all, let’s see how we will make it in React.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">HomePage</span> /&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomePage</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    counter: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  incrementCounter = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> (&#123;</span><br><span class="line">      counter: state.counter + <span class="number">1</span></span><br><span class="line">    &#125;))</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div className=<span class="string">"container"</span>&gt;</span><br><span class="line">        &lt;p className=<span class="string">"text"</span>&gt;I will code &#123;<span class="keyword">this</span>.state.counter&#125; lines <span class="keyword">this</span> month.&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button className="button" onClick=&#123;this.incrementCounter&#125;&gt;Increment&lt;/</span>button&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">ReactDOM.render(</span></span><br><span class="line"><span class="regexp">  &lt;App /</span>&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">100vh</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.text</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">28px</span>;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">500</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">8px</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">90px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#9037AA</span>;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">600</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">8px</span>;</span><br><span class="line">  <span class="attribute">outline</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then comes the most exciting part, how should we implement this with Flutter?</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatelessWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This widget is the root of your application.</span></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> CupertinoApp(</span><br><span class="line">      title: <span class="string">'Flutter Demo'</span>,</span><br><span class="line">      home: HomePage(),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomePage</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="comment">// This widget is the home page of your application.</span></span><br><span class="line">  HomePage(&#123;Key key&#125;) : <span class="keyword">super</span>(key: key);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  _HomePageState createState() =&gt; _HomePageState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_HomePageState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">HomePage</span>&gt; </span>&#123;</span><br><span class="line">  <span class="built_in">int</span> _counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> _incrementCounter() &#123;</span><br><span class="line">    setState(() &#123;</span><br><span class="line">      _counter++;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> CupertinoPageScaffold(</span><br><span class="line">      child: Container(</span><br><span class="line">        width: MediaQuery.of(context).size.width,</span><br><span class="line">        child: Column(</span><br><span class="line">          mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">          crossAxisAlignment: CrossAxisAlignment.center,</span><br><span class="line">          children: &lt;Widget&gt;[</span><br><span class="line">            Text(</span><br><span class="line">              <span class="string">'I will code <span class="subst">$_counter</span> lines this month.'</span>,</span><br><span class="line">              style: TextStyle(</span><br><span class="line">                fontSize: <span class="number">28</span>,</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            FlatButton(</span><br><span class="line">              child: Text(</span><br><span class="line">                <span class="string">'Increment'</span>,</span><br><span class="line">                style: TextStyle(</span><br><span class="line">                  color: Colors.white,</span><br><span class="line">                ),</span><br><span class="line">              ),</span><br><span class="line">              onPressed: _incrementCounter,</span><br><span class="line">              color: Colors.purple,</span><br><span class="line">              shape: RoundedRectangleBorder(</span><br><span class="line">                borderRadius: BorderRadius.circular(<span class="number">8.0</span>),</span><br><span class="line">              ),</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(App());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, the code for Flutter and the code for React are almost one-to-one.</p>
+<p>For example, we have the entry of Application in Flutter: <code>runApp(App())</code>. This can correspond to the <code>ReactDOM.render(&lt;App/&gt;, root)</code> in the React.</p>
+<p>We have defined two widgets(components) for the screen: <code>App</code> and <code>HomePage</code>, each have a <code>build</code> function(<code>render</code> in react). When you take a close look at the <code>HomePage</code>, you will find class is organized exactly the same way: we have an initialized state and an Event handle to change the state. Although there is one big difference while writing <code>StatefulWidget</code>, the actual <code>State</code> is seperated from parent <code>StatefulWidget</code>, this is because every widget, stateless or stateful, is designed to be immutable, while a state is mutable. For now we can just ignore the technical details here and keep going to compare the layout part.</p>
+<p>So for the layout of <code>HomePage</code>. The basic tree structure here is that we have a <code>container</code> as a root, and it contains two children: a <code>text</code> and a <code>button</code>. Although the structure is the same but the code of Flutter is a little bit longer the React’s one. This is because we are making styles programmatically, instead of writing CSS in traditional Web development. But you can also find the corresponding CSS in React from the Layout widget of Flutter. For example, the <code>Column</code> widget corresponds to <code>flex-direction: column</code>, the <code>MainAxisAlignment.center</code> parameter corresponds to <code>justify-content: center</code>, the <code>CrossAxisAlignment.center</code> parameter corresponds to <code>align-items: center</code>. And then naturally, we go ahead and specify <code>TextStyle</code>, <code>color</code>, <code>shape</code>, <code>onPressed</code> while instantiating widgets class, fairly straightforward.</p>
+<p>It’s amazing when you see such a high level of consistency. Your knowledge on React can be seamlessly linked to Flutter. More than that, Flutter has other concepts that have been transplanted from React like Redux, Provider, simply because the data flow model in Flutter is also inspired by React. Personally, I am glad to see how React’s philosophy is affecting all areas of UI development, and looking forward to seeing the UI-related development unified under the same pattern.</p>
+<p>To summarize, I am trying to link Flutter with React and find a way to flatten the learning curve for front-end engineer with React experience. This is just a introductory article about Flutter. Flutter team also provides a series of helpful tutorials for developers coming from different backgrounds. Go and check it out: <a href="[https://flutter.dev/docs/get-started/flutter-for/react-native-devs]">From another platform?</a></p>
+<p>Happy making Flutter Apps.</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/front-end/"> #front end </a>
+          
+            <a href="/tags/android/"> #android </a>
+          
+            <a href="/tags/ios/"> #ios </a>
+          
+            <a href="/tags/flutter/"> #flutter </a>
+          
+            <a href="/tags/react/"> #react </a>
+          
+            <a href="/tags/cross-platform/"> #cross platform </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/18/shadow-dom-styling-notes/">Shadow DOM Styling Notes</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="comments" id="comments">
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="/img/avatar_v2.jpg" alt="Ian Gong">
+          <p class="site-author-name">Ian Gong</p>
+        </div>
+        <p class="site-description motion-element">Ian's Blog | ian | ianwith</p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml">
+              <i class="menu-item-icon icon-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/ianwith" target="_blank">GitHub</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.linkedin.com/in/ianwith" target="_blank">Linkedin</a>
+            </span>
+            
+              <span class="links-of-author-item">
+              <a href="https://www.douban.com/people/59990720" target="_blank">Douban</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flutter-vs-React"><span class="nav-number">1.</span> <span class="nav-text">Flutter vs React</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp;  2014 - 
+  2020
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Ian Gong</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.content img').each(function () {
+        var $image = $(this);
+        var $imageWrapLink = $image.parent('a');
+
+        if ($imageWrapLink.size() < 1) {
+          $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
+        }
+        $imageWrapLink.addClass('fancybox');
+      });
+    });
+    $('.fancybox').fancybox({
+      helpers: {
+        overlay: {
+          locked: false
+        }
+      }
+    });
+  </script>
+
+
+  <script type="text/javascript">
+  function hasMobileUA () {
+    var nav = window.navigator;
+    var ua = nav.userAgent;
+    var pa = /iPad|iPhone|Android|Opera Mini|BlackBerry|webOS|UCWEB|Blazer|PSP|IEMobile|Symbian/g;
+
+    return pa.test(ua);
+  }
+
+  function isDesktop () {
+    return screen.width > 991 && !hasMobileUA();
+  }
+
+  function isTablet () {
+    return screen.width < 992 && screen.width > 767 && hasMobileUA();
+  }
+
+  function isMobile () {
+    return screen.width < 767 && hasMobileUA();
+  }
+
+  function escapeSelector (selector) {
+    return selector.replace(/[!"$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, "\\$&")
+  }
+
+  function displaySidebar () {
+    setTimeout(function () {
+      $('.sidebar-toggle').trigger('click');
+    }, 800);
+  }
+</script>
+
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" id="motion.global">
+  $(document).ready(function () {
+    var body = $('body');
+    var isSidebarVisible = false;
+    var sidebarToggle = $('.sidebar-toggle');
+    var sidebarToggleLine1st = $('.sidebar-toggle-line-first')
+    var sidebarToggleLine2nd = $('.sidebar-toggle-line-middle');
+    var sidebarToggleLine3rd = $('.sidebar-toggle-line-last');
+    var sidebar = $('.sidebar');
+
+    var SIDEBAR_WIDTH = '320px';
+    var SIDEBAR_DISPLAY_DURATION = 300;
+
+    var sidebarToogleLineStatusInit = {width: '100%', opacity: 1, left: 0, rotateZ: 0, top: 0};
+
+    var sidebarToggleLine1stStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine1stStatusArrow = {width: '50%', rotateZ: '-45deg', top: '2px'};
+    var sidebarToogleLine1stStatusClose = {width: '100%', rotateZ: '-45deg', top: '5px'};
+
+    var sidebarToggleLine2ndStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine2ndStatusArrow = {width: '90%'};
+    var sidebarToogleLine2ndStatusClose = {opacity: 0};
+
+    var sidebarToggleLine3rdStatusInit = sidebarToogleLineStatusInit;
+    var sidebarToggleLine3rdStatusArrow = {width: '50%', rotateZ: '45deg', top: '-2px'};
+    var sidebarToogleLine3rdStatusClose = {width: '100%', rotateZ: '45deg', top: '-5px'};
+
+    LogoAndMenuMotion();
+    sidebarToggleMotion();
+    postsListMotion();
+    backToTopMotion();
+
+
+    $(document)
+      .on('sidebar.isShowing', function () {
+        isDesktop() && body.velocity(
+          {paddingRight: SIDEBAR_WIDTH},
+          SIDEBAR_DISPLAY_DURATION
+        );
+        sidebarContentMotion();
+      })
+      .on('sidebar.isHiding', function () {});
+
+    function LogoAndMenuMotion() {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200 } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    }
+
+
+    function backToTopMotion () {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        body.velocity('scroll');
+      });
+    }
+
+    function sidebarShowMotion () {
+
+      sidebarToggleLine1st.velocity(sidebarToogleLine1stStatusClose);
+      sidebarToggleLine2nd.velocity(sidebarToogleLine2ndStatusClose);
+      sidebarToggleLine3rd.velocity(sidebarToogleLine3rdStatusClose);
+
+      sidebar.velocity({width: SIDEBAR_WIDTH}, {
+        display: 'block',
+        duration: SIDEBAR_DISPLAY_DURATION,
+        complete: function () {
+          sidebar.addClass('sidebar-active');
+          sidebar.trigger('sidebar.didShow');
+        }
+      });
+      sidebar.trigger('sidebar.isShowing');
+    }
+
+    function sidebarHideMotion () {
+      isDesktop() && body.velocity({paddingRight: 0});
+      sidebar.velocity('reverse');
+
+      sidebarToggleLine1st.velocity(sidebarToggleLine1stStatusInit);
+      sidebarToggleLine2nd.velocity(sidebarToggleLine2ndStatusInit);
+      sidebarToggleLine3rd.velocity(sidebarToggleLine3rdStatusInit);
+
+      sidebar.removeClass('sidebar-active');
+      sidebar.trigger('sidebar.isHiding');
+    };
+
+    function sidebarContentMotion () {
+      $('.sidebar .motion-element').velocity(
+        'transition.slideRightIn',
+        {stagger: 50, drag: true}
+      );
+    }
+
+    function postsListMotion () {
+      var postMotionOptions = window.postMotionOptions || {stagger: 300, drag: true};
+      $('.post').velocity('transition.slideDownIn', postMotionOptions);
+    }
+
+    function sidebarToggleMotion () {
+      sidebarToggle.on('click', function () {
+        isSidebarVisible ? sidebarHideMotion() : sidebarShowMotion();
+        isSidebarVisible = !isSidebarVisible;
+      });
+
+      sidebarToggle.hover(function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusArrow);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusArrow);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusArrow);
+      }, function () {
+        if (isSidebarVisible) {return}
+        sidebarToggleLine1st.velocity('stop').velocity(sidebarToggleLine1stStatusInit);
+        sidebarToggleLine2nd.velocity('stop').velocity(sidebarToggleLine2ndStatusInit);
+        sidebarToggleLine3rd.velocity('stop').velocity(sidebarToggleLine3rdStatusInit);
+      });
+    }
+  });
+
+</script>
+
+
+
+
+
+  
+  
+<script type="text/javascript" id="bootstrap.scrollspy.custom">
+  /* ========================================================================
+  * Bootstrap: scrollspy.js v3.3.2
+  * http://getbootstrap.com/javascript/#scrollspy
+  * ========================================================================
+  * Copyright 2011-2015 Twitter, Inc.
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  * ======================================================================== */
+
+  /**
+   * Custom by iissnan
+   *
+   * - Add a `clear.bs.scrollspy` event.
+   * - Esacpe targets selector.
+   */
+
+
+  +function ($) {
+    'use strict';
+
+    // SCROLLSPY CLASS DEFINITION
+    // ==========================
+
+    function ScrollSpy(element, options) {
+      this.$body          = $(document.body)
+      this.$scrollElement = $(element).is(document.body) ? $(window) : $(element)
+      this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+      this.selector       = (this.options.target || '') + ' .nav li > a'
+      this.offsets        = []
+      this.targets        = []
+      this.activeTarget   = null
+      this.scrollHeight   = 0
+
+      this.$scrollElement.on('scroll.bs.scrollspy', $.proxy(this.process, this))
+      this.refresh()
+      this.process()
+    }
+
+    ScrollSpy.VERSION  = '3.3.2'
+
+    ScrollSpy.DEFAULTS = {
+      offset: 10
+    }
+
+    ScrollSpy.prototype.getScrollHeight = function () {
+      return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+    }
+
+    ScrollSpy.prototype.refresh = function () {
+      var that          = this
+      var offsetMethod  = 'offset'
+      var offsetBase    = 0
+
+      this.offsets      = []
+      this.targets      = []
+      this.scrollHeight = this.getScrollHeight()
+
+      if (!$.isWindow(this.$scrollElement[0])) {
+        offsetMethod = 'position'
+        offsetBase   = this.$scrollElement.scrollTop()
+      }
+
+      this.$body
+        .find(this.selector)
+        .map(function () {
+          var $el   = $(this)
+          var href  = $el.data('target') || $el.attr('href')
+          var $href = /^#./.test(href) && $(escapeSelector(href)) // Need to escape selector.
+
+          return ($href
+            && $href.length
+            && $href.is(':visible')
+            && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+        })
+        .sort(function (a, b) { return a[0] - b[0] })
+        .each(function () {
+          that.offsets.push(this[0])
+          that.targets.push(this[1])
+        })
+
+
+    }
+
+    ScrollSpy.prototype.process = function () {
+      var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+      var scrollHeight = this.getScrollHeight()
+      var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+      var offsets      = this.offsets
+      var targets      = this.targets
+      var activeTarget = this.activeTarget
+      var i
+
+      if (this.scrollHeight != scrollHeight) {
+        this.refresh()
+      }
+
+      if (scrollTop >= maxScroll) {
+        return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      }
+
+      if (activeTarget && scrollTop < offsets[0]) {
+        $(this.selector).trigger('clear.bs.scrollspy')  // Add a custom event.
+        this.activeTarget = null
+        return this.clear()
+      }
+
+      for (i = offsets.length; i--;) {
+        activeTarget != targets[i]
+          && scrollTop >= offsets[i]
+          && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+          && this.activate(targets[i])
+      }
+    }
+
+    ScrollSpy.prototype.activate = function (target) {
+      this.activeTarget = target
+
+      this.clear()
+
+      var selector = this.selector +
+        '[data-target="' + target + '"],' +
+        this.selector + '[href="' + target + '"]'
+
+      var active = $(selector)
+        .parents('li')
+        .addClass('active')
+
+      if (active.parent('.dropdown-menu').length) {
+        active = active
+          .closest('li.dropdown')
+          .addClass('active')
+      }
+
+      active.trigger('activate.bs.scrollspy')
+    }
+
+    ScrollSpy.prototype.clear = function () {
+      $(this.selector)
+        .parentsUntil(this.options.target, '.active')
+        .removeClass('active')
+    }
+
+
+    // SCROLLSPY PLUGIN DEFINITION
+    // ===========================
+
+    function Plugin(option) {
+      return this.each(function () {
+        var $this   = $(this)
+        var data    = $this.data('bs.scrollspy')
+        var options = typeof option == 'object' && option
+
+        if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+        if (typeof option == 'string') data[option]()
+      })
+    }
+
+    var old = $.fn.scrollspy
+
+    $.fn.scrollspy             = Plugin
+    $.fn.scrollspy.Constructor = ScrollSpy
+
+
+    // SCROLLSPY NO CONFLICT
+    // =====================
+
+    $.fn.scrollspy.noConflict = function () {
+      $.fn.scrollspy = old
+      return this
+    }
+
+
+    // SCROLLSPY DATA-API
+    // ==================
+
+    $(window).on('load.bs.scrollspy.data-api', function () {
+      $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this)
+        Plugin.call($spy, $spy.data())
+      })
+    })
+
+  }(jQuery);
+</script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      if (isDesktop() && HEXO_SIDEBAR_CONFIGURATION === 'post') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    var HEXO_SIDEBAR_CONFIGURATION = 'hide';
+    $(document).ready(function () {
+      if (HEXO_SIDEBAR_CONFIGURATION === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+  
+
+  
+
+
+
+
+  
+  
+</body>
+</html>
