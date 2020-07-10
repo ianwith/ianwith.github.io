@@ -42,6 +42,8 @@ l-header-bar > header {    /* No Way! */
 </style>
 ```
 
+<!-- more -->
+
 ## Note 2: Custom properties go through the shadow DOM
 
 Styles inside shadow DOM can access CSS variables even from outside.
